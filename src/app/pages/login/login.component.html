@@ -1,0 +1,81 @@
+<div class="container">
+  <mat-card class="example-card" appearance="outlined">
+    <div class="imgcontainer">
+      <img src="../../../assets/google icon.webp" alt="Photo of a Shiba Inu" />
+    </div>
+    <div class="headercontainer">
+      <h1>Login</h1>
+      <div style="font-weight: 300; font-size: medium">
+        Use your Google Account
+      </div>
+    </div>
+    <div class="inpcontainer">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            [formControl]="emailFormControl"
+            [errorStateMatcher]="matcher"
+            placeholder="Ex. pat@example.com"
+          />
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+          <mat-error
+            *ngIf="
+              emailFormControl.hasError('email') &&
+              !emailFormControl.hasError('required')
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+    <div class="inpcontainer">
+      <form class="example-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Password</mat-label>
+          <input
+            type="email"
+            matInput
+            [formControl]="passwordFormControl"
+            [errorStateMatcher]="matcher"
+            placeholder="Enter Password"
+          />
+          <!-- <mat-hint>Errors appear instantly!</mat-hint> -->
+          <mat-error
+            *ngIf="
+              passwordFormControl.hasError('minlength') &&
+              !passwordFormControl.hasError('required')
+            "
+          >
+            Please enter a valid password
+          </mat-error>
+          <mat-error *ngIf="passwordFormControl.hasError('required')">
+            Password is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+      </form>
+    </div>
+    <div>
+      <div
+        style="
+          display: flex;
+          align-items: center;
+          padding-left: 5%;
+          color: #0b57d0;
+        "
+      >
+        forgot Password?
+      </div>
+    </div>
+    <div class="fcontainer">
+      <div style="color: #0b57d0">Create account</div>
+      <div><button mat-raised-button color="primary">Login</button></div>
+    </div>
+  </mat-card>
+</div>

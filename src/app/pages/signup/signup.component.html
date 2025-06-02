@@ -1,0 +1,171 @@
+<div class="container">
+  <div class="main-box">
+    <div class="form-section">
+      <div class="header-section">
+        <div class="google-logo">
+          <span class="google-g">G</span>
+          <span class="google-o1">o</span>
+          <span class="google-o2">o</span>
+          <span class="google-g2">g</span>
+          <span class="google-l">l</span>
+          <span class="google-e">e</span>
+        </div>
+        <h1 class="title">Create your Google Account</h1>
+      </div>
+
+      <form class="signup-form">
+        <!-- First Name and Last Name Row -->
+        <div class="name-row">
+          <mat-form-field class="name-field" appearance="outline">
+            <mat-label>First Name</mat-label>
+            <input
+              matInput
+              [formControl]="firstNameFormControl"
+              [errorStateMatcher]="matcher"
+              placeholder="First Name*"
+            />
+            <mat-error *ngIf="firstNameFormControl.hasError('required')">
+              First name is required
+            </mat-error>
+            <mat-error *ngIf="firstNameFormControl.hasError('minlength')">
+              First name must be at least 2 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="name-field" appearance="outline">
+            <mat-label>Last Name</mat-label>
+            <input
+              matInput
+              [formControl]="lastNameFormControl"
+              [errorStateMatcher]="matcher"
+              placeholder="Last Name*"
+            />
+            <mat-error *ngIf="lastNameFormControl.hasError('required')">
+              Last name is required
+            </mat-error>
+            <mat-error *ngIf="lastNameFormControl.hasError('minlength')">
+              Last name must be at least 2 characters
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <!-- Username Field -->
+        <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Username</mat-label>
+          <input
+            matInput
+            [formControl]="usernameFormControl"
+            [errorStateMatcher]="matcher"
+            placeholder="username*"
+          />
+          <mat-error *ngIf="usernameFormControl.hasError('required')">
+            Username is required
+          </mat-error>
+          <mat-error *ngIf="usernameFormControl.hasError('minlength')">
+            Username must be at least 3 characters
+          </mat-error>
+          <mat-error *ngIf="usernameFormControl.hasError('pattern')">
+            Username can only contain letters, numbers, periods, and underscores
+          </mat-error>
+        </mat-form-field>
+
+        <div class="helper-text">You can use letters, numbers & periods</div>
+
+        <div class="current-email-link" (click)="onUseCurrentEmail()">
+          Use my current email instead
+        </div>
+
+        <!-- Password Row -->
+        <div class="password-row">
+          <mat-form-field class="password-field" appearance="outline">
+            <mat-label>Password</mat-label>
+            <input
+              matInput
+              [type]="hidePassword ? 'password' : 'text'"
+              [formControl]="passwordFormControl"
+              [errorStateMatcher]="matcher"
+              placeholder="Password*"
+            />
+            <mat-error *ngIf="passwordFormControl.hasError('required')">
+              Password is required
+            </mat-error>
+            <mat-error *ngIf="passwordFormControl.hasError('minlength')">
+              Password must be at least 8 characters
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="password-field" appearance="outline">
+            <mat-label>Confirm</mat-label>
+            <input
+              matInput
+              [type]="hideConfirmPassword ? 'password' : 'text'"
+              [formControl]="confirmPasswordFormControl"
+              [errorStateMatcher]="matcher"
+              placeholder="Confirm*"
+            />
+            <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">
+              Please confirm your password
+            </mat-error>
+            <mat-error
+              *ngIf="!passwordsMatch() && confirmPasswordFormControl.value"
+            >
+              Passwords do not match
+            </mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="password-helper">
+          Use 8 or more characters with a mix of letters, numbers & symbols
+        </div>
+
+        <!-- Show Password Checkbox -->
+        <div class="checkbox-container">
+          <mat-checkbox
+            [(ngModel)]="showPassword"
+            (change)="toggleShowPassword()"
+            [ngModelOptions]="{ standalone: true }"
+          >
+            Show Password
+          </mat-checkbox>
+        </div>
+
+        <!-- Bottom Actions -->
+        <div class="bottom-actions">
+          <button
+            type="button"
+            mat-button
+            class="sign-in-btn"
+            style="color: #1a73e8"
+            (click)="onSignIn()"
+          >
+            Sign in instead
+          </button>
+
+          <button
+            type="button"
+            mat-raised-button
+            class="next-btn"
+            [disabled]="!isFormValid()"
+            (click)="onNext()"
+          >
+            Next
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Right Side Illustration -->
+    <div class="illustration-section">
+      <div class="illustration-container">
+        <img
+          src="../../../assets/google-product-image.png"
+          alt="Google Account Illustration"
+          class="illustration-image"
+        />
+      </div>
+      <div class="illustration-text">
+        One account. All of Google working for you.
+      </div>
+    </div>
+  </div>
+</div>

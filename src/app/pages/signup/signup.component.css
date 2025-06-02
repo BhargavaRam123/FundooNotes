@@ -1,0 +1,266 @@
+.container {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f8f9fa;
+  font-family: "Google Sans", Roboto, Arial, sans-serif;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.main-box {
+  display: flex;
+  flex-direction: row;
+  background-color: #fff;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 1100px;
+  width: 100%;
+  min-height: 600px;
+}
+
+.form-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 40px;
+  max-width: 500px;
+}
+
+.header-section {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.google-logo {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+.google-g {
+  color: #4285f4;
+}
+.google-o1 {
+  color: #ea4335;
+}
+.google-o2 {
+  color: #fbbc05;
+}
+.google-g2 {
+  color: #4285f4;
+}
+.google-l {
+  color: #34a853;
+}
+.google-e {
+  color: #ea4335;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 400;
+  color: #202124;
+  margin: 0;
+  line-height: 1.3333;
+}
+
+.signup-form {
+  width: 100%;
+  max-width: 350px;
+}
+
+.name-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.name-field {
+  flex: 1;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.helper-text {
+  font-size: 12px;
+  color: #5f6368;
+  margin-bottom: 8px;
+  margin-left: 16px;
+}
+
+.current-email-link {
+  color: #1a73e8;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 24px;
+  margin-left: 16px;
+}
+
+.current-email-link:hover {
+  text-decoration: underline;
+}
+
+.password-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 8px;
+}
+
+.password-field {
+  flex: 1;
+}
+
+.password-helper {
+  font-size: 12px;
+  color: #5f6368;
+  margin-bottom: 24px;
+  margin-left: 16px;
+  line-height: 1.4;
+}
+
+.checkbox-container {
+  margin-bottom: 40px;
+  margin-left: 16px;
+}
+
+.checkbox-container ::ng-deep .mat-checkbox {
+  font-size: 14px;
+}
+
+.checkbox-container ::ng-deep .mat-checkbox-label {
+  color: #5f6368;
+}
+
+.bottom-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sign-in-btn {
+  color: #1a73e8;
+  font-weight: 500;
+}
+
+.next-btn {
+  background-color: #1a73e8;
+  color: white;
+  font-weight: 500;
+  padding: 0 24px;
+  height: 36px;
+}
+
+.next-btn:disabled {
+  background-color: #f1f3f4;
+  color: #9aa0a6;
+}
+
+.illustration-section {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 60px 40px;
+  /* border-left: 1px solid #dadce0; */
+}
+
+.illustration-container {
+  margin-bottom: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.illustration-image {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+}
+
+.illustration-text {
+  font-size: 16px;
+  color: #5f6368;
+  text-align: center;
+  max-width: 300px;
+  line-height: 1.4;
+}
+
+/* Form field customizations */
+::ng-deep .mat-form-field-outline {
+  color: #dadce0;
+}
+
+::ng-deep .mat-form-field-outline-thick {
+  color: #1a73e8;
+}
+
+::ng-deep .mat-form-field-label {
+  color: #5f6368;
+}
+
+::ng-deep .mat-form-field-label.mat-focused {
+  color: #1a73e8;
+}
+
+::ng-deep .mat-input-element {
+  color: #202124;
+  font-size: 16px;
+}
+
+::ng-deep .mat-form-field-placeholder {
+  color: #9aa0a6;
+}
+
+::ng-deep .mat-error {
+  font-size: 12px;
+  color: #d93025;
+}
+
+/* Responsive design */
+@media (max-width: 900px) {
+  .container {
+    padding: 20px;
+  }
+
+  .main-box {
+    flex-direction: column;
+    max-width: 500px;
+    min-height: auto;
+  }
+
+  .form-section {
+    padding: 40px 20px;
+    max-width: none;
+  }
+
+  .illustration-section {
+    border-left: none;
+    border-top: 1px solid #dadce0;
+    padding: 40px 20px;
+  }
+
+  .name-row,
+  .password-row {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .name-field,
+  .password-field {
+    width: 100%;
+  }
+
+  .illustration-image {
+    max-width: 200px;
+  }
+}
