@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, Validators, FormGroupDirective } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-
+import { UserService } from 'src/app/services/user_services/user.service';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
     control: FormControl | null,
@@ -23,6 +23,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
+  constructor(private signup: UserService) {}
   firstNameFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(2),
@@ -36,7 +37,7 @@ export class SignupComponent {
   usernameFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(3),
-    Validators.pattern(/^[a-zA-Z0-9._]+$/),
+    // Validators.pattern(/^[a-zA-Z0-9._]+$/),
   ]);
 
   passwordFormControl = new FormControl('', [
@@ -84,6 +85,22 @@ export class SignupComponent {
         username: this.usernameFormControl.value,
         password: this.passwordFormControl.value,
       });
+      this.signup
+        .signUp({
+          firstName: this.firstNameFormControl.value,
+          lastName: this.lastNameFormControl.value,
+          email: this.usernameFormControl.value,
+          password: this.passwordFormControl.value,
+          service: 'advance',
+        })
+        .subscribe({
+          next: (response) => {
+            console.log('response value', response);
+          },
+          error: (err) => {
+            console.log('error value', err);
+          },
+        });
     }
   }
 
