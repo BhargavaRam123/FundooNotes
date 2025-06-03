@@ -50,3 +50,32 @@ img {
   gap: 45%;
   margin-bottom: 100px;
 }
+::ng-deep .mat-form-field-outline {
+  color: #dadce0;
+}
+
+::ng-deep .mat-form-field-outline-thick {
+  color: #1a73e8;
+}
+
+::ng-deep .mat-form-field-label {
+  color: #5f6368;
+}
+
+::ng-deep .mat-form-field-label.mat-focused {
+  color: #1a73e8;
+}
+
+::ng-deep .mat-input-element {
+  color: #202124;
+  font-size: 16px;
+}
+
+::ng-deep .mat-form-field-placeholder {
+  color: #9aa0a6;
+}
+
+::ng-deep .mat-error {
+  font-size: 12px;
+  color: #d93025;
+}
