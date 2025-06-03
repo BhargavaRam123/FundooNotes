@@ -75,7 +75,11 @@
     </div>
     <div class="fcontainer">
       <div style="color: #0b57d0">Create account</div>
-      <div><button mat-raised-button color="primary">Login</button></div>
+      <div>
+        <button mat-raised-button color="primary" (click)="onSubmit()">
+          Login
+        </button>
+      </div>
     </div>
   </mat-card>
 </div>

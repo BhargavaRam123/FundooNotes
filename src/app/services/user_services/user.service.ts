@@ -14,4 +14,13 @@ export class UserService {
     });
     return this.httpService.postApi(endPoint, data, header);
   }
+  logIn(data: any) {
+    let endPoint: string = 'user/login';
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+
+    return this.httpService.postApi(endPoint, data, header);
+  }
 }
