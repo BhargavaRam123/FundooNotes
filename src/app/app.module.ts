@@ -14,7 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatCheckboxModule } from '@angular/material/checkbox'; // Add this for checkbox
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [AppComponent, LoginComponent, SignupComponent],
   imports: [
@@ -30,6 +30,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox'; // Add this for 
     MatDividerModule,
     MatInputModule,
     MatCheckboxModule, // Add this for checkbox
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { FormControl, Validators, FormGroupDirective } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
-
+import { UserService } from 'src/app/services/user_services/user.service';
+import { Router } from '@angular/router';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
     control: FormControl | null,
@@ -22,6 +23,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
+  constructor(private service: UserService, private router: Router) {}
   emailFormControl = new FormControl('', [
     Validators.required,
     Validators.email,
@@ -30,6 +32,24 @@ export class LoginComponent {
     Validators.required,
     Validators.minLength(6),
   ]);
+  onSubmit() {
+    console.log('clicked');
+    let data = {
+      email: this.emailFormControl.value,
+      password: this.passwordFormControl.value,
+    };
+    this.service.logIn(data).subscribe({
+      next: (res) => {
+        console.log('response value', res);
+      },
+      error: (err) => {
+        console.log('error value', err);
+      },
+    });
+  }
+  onSignup() {
+    this.router.navigate(['signup']);
+  }
 
   matcher = new MyErrorStateMatcher();
   pmatcher = new MyErrorStateMatcher();
