@@ -29,6 +29,10 @@
             <mat-error *ngIf="firstNameFormControl.hasError('minlength')">
               First name must be at least 2 characters
             </mat-error>
+            <mat-error *ngIf="firstNameFormControl.hasError('pattern')">
+              First name can only contain letters, spaces, hyphens, and
+              apostrophes
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="name-field" appearance="outline">
@@ -45,25 +49,26 @@
             <mat-error *ngIf="lastNameFormControl.hasError('minlength')">
               Last name must be at least 2 characters
             </mat-error>
+            <mat-error *ngIf="lastNameFormControl.hasError('pattern')">
+              Last name can only contain letters, spaces, hyphens, and
+              apostrophes
+            </mat-error>
           </mat-form-field>
         </div>
 
         <mat-form-field class="full-width" appearance="outline">
-          <mat-label>Username</mat-label>
+          <mat-label>Email</mat-label>
           <input
             matInput
-            [formControl]="usernameFormControl"
+            [formControl]="emailFormControl"
             [errorStateMatcher]="matcher"
             placeholder="username*"
           />
-          <mat-error *ngIf="usernameFormControl.hasError('required')">
-            Username is required
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is required
           </mat-error>
-          <mat-error *ngIf="usernameFormControl.hasError('minlength')">
-            Username must be at least 3 characters
-          </mat-error>
-          <mat-error *ngIf="usernameFormControl.hasError('pattern')">
-            Username can only contain letters, numbers, periods, and underscores
+          <mat-error *ngIf="emailFormControl.hasError('email')">
+            Enter a valid email
           </mat-error>
         </mat-form-field>
 
@@ -111,6 +116,7 @@
           </mat-form-field>
         </div>
 
+        <!-- Rest of your template remains the same -->
         <div class="password-helper">
           Use 8 or more characters with a mix of letters, numbers & symbols
         </div>
@@ -149,6 +155,7 @@
       </form>
     </div>
 
+    <!-- Illustration section remains the same -->
     <div class="illustration-section">
       <div class="illustration-container">
         <img

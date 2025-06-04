@@ -3,6 +3,7 @@ import { FormControl, Validators, FormGroupDirective } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UserService } from 'src/app/services/user_services/user.service';
+import { Router } from '@angular/router';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
     control: FormControl | null,
@@ -23,21 +24,23 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
-  constructor(private signup: UserService) {}
+  constructor(private signup: UserService, private router: Router) {}
   firstNameFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(2),
+    Validators.pattern(/^[a-zA-Z]+$/),
   ]);
 
   lastNameFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(2),
+    Validators.pattern(/^[a-zA-Z]+$/),
   ]);
 
-  usernameFormControl = new FormControl('', [
+  emailFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(3),
-    // Validators.pattern(/^[a-zA-Z0-9._]+$/),
+    Validators.email,
   ]);
 
   passwordFormControl = new FormControl('', [
@@ -72,8 +75,8 @@ export class SignupComponent {
   }
 
   onSignIn() {
-    // Navigate to sign in page
     console.log('Navigate to sign in');
+    this.router.navigate(['login']);
   }
 
   onNext() {
@@ -82,14 +85,14 @@ export class SignupComponent {
       console.log({
         firstName: this.firstNameFormControl.value,
         lastName: this.lastNameFormControl.value,
-        username: this.usernameFormControl.value,
+        username: this.emailFormControl.value,
         password: this.passwordFormControl.value,
       });
       this.signup
         .signUp({
           firstName: this.firstNameFormControl.value,
           lastName: this.lastNameFormControl.value,
-          email: this.usernameFormControl.value,
+          email: this.emailFormControl.value,
           password: this.passwordFormControl.value,
           service: 'advance',
         })
@@ -108,7 +111,7 @@ export class SignupComponent {
     return (
       this.firstNameFormControl.valid &&
       this.lastNameFormControl.valid &&
-      this.usernameFormControl.valid &&
+      this.emailFormControl.valid &&
       this.passwordFormControl.valid &&
       this.confirmPasswordFormControl.valid &&
       this.passwordFormControl.value === this.confirmPasswordFormControl.value
