@@ -39,39 +39,42 @@ input:focus {
   border: 1px solid rgba(0, 0, 0, 0.5);
 }
 
-.sidecontainer {
-  height: 25px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 20px 10px;
-
-  border-radius: 0px 25px 25px 0px;
-}
-
 .scontainer {
-  min-width: 5%;
+  width: 5%;
   border: 0px;
+  transition: width 0.5s ease;
+}
+.scontainer.expanded {
+  width: 15%;
+  border-right: 1px solid #5f6368;
+  box-shadow: 1px 0px 5px #5f6368;
 }
 
 .maincontainer {
   background-color: white;
 }
 
-.selected {
-  background-color: rgb(254, 239, 195);
-}
-
-.sidecontainer div {
-  width: 200px;
-}
-
-.circle {
+.sidecontainer {
+  padding: 20px;
+  height: 30px;
+  width: 30px;
   display: flex;
   align-items: center;
+}
+
+.selected {
+  background-color: rgb(254, 239, 195);
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+  padding-right: 0;
+  width: 91%;
+}
+.shover {
+  width: 100%;
+}
+.exps {
   justify-content: center;
   background-color: rgb(254, 239, 195);
+
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
 }

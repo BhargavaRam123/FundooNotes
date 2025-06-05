@@ -11,4 +11,10 @@ export class DashboardComponent {
   selectItem(s: string) {
     this.selectedItem = s;
   }
+  evententer() {
+    this.showFiller = true;
+  }
+  eventleave() {
+    this.showFiller = false;
+  }
 }
