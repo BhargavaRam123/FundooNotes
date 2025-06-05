@@ -1,0 +1,73 @@
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer
+    mode="side"
+    opened
+    class="scontainer"
+    [class.expanded]="showFiller"
+    (mouseenter)="evententer()"
+    (mouseleave)="eventleave()"
+  >
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'notes' && showFiller"
+      [class.exps]="selectedItem === 'notes' && !showFiller"
+      [class.shover]="selectedItem !== 'notes' && showFiller"
+      (click)="selectItem('notes')"
+    >
+      <mat-icon>lightbulb_outline</mat-icon>
+      <div *ngIf="showFiller">Notes</div>
+    </div>
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'Reminders' && showFiller"
+      [class.exps]="selectedItem === 'Reminders' && !showFiller"
+      [class.shover]="selectedItem !== 'Reminders' && showFiller"
+      (click)="selectItem('Reminders')"
+    >
+      <mat-icon>notifications_outline</mat-icon>
+      <div *ngIf="showFiller">Reminders</div>
+    </div>
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'label' && showFiller"
+      [class.exps]="selectedItem === 'label' && !showFiller"
+      [class.shover]="selectedItem !== 'label' && showFiller"
+      (click)="selectItem('label')"
+    >
+      <mat-icon>label_outline</mat-icon>
+      <div *ngIf="showFiller">Label</div>
+    </div>
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'edit' && showFiller"
+      [class.exps]="selectedItem === 'edit' && !showFiller"
+      [class.shover]="selectedItem !== 'edit' && showFiller"
+      (click)="selectItem('edit')"
+    >
+      <mat-icon>edit_outline</mat-icon>
+      <div *ngIf="showFiller">Edit Labels</div>
+    </div>
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'archive' && showFiller"
+      [class.exps]="selectedItem === 'archive' && !showFiller"
+      [class.shover]="selectedItem !== 'archive' && showFiller"
+      [class.shover]="selectedItem !== 'archive' && showFiller"
+      (click)="selectItem('archive')"
+    >
+      <mat-icon>archive_outline</mat-icon>
+      <div *ngIf="showFiller">Archive</div>
+    </div>
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'Bin' && showFiller"
+      [class.exps]="selectedItem === 'Bin' && !showFiller"
+      [class.shover]="selectedItem !== 'Bin' && showFiller"
+      (click)="selectItem('Bin')"
+    >
+      <mat-icon>delete</mat-icon>
+      <div *ngIf="showFiller">Bin</div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="maincontainer">Main content</mat-drawer-content>
+</mat-drawer-container>

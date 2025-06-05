@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
+
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css'],
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css'],
 })
-export class DashboardComponent {
+export class SidebarComponent {
   showFiller = false;
   selectedItem: string = '';
   selectItem(s: string) {

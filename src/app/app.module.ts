@@ -18,12 +18,14 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component'; // A
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgIf } from '@angular/common';
+import { SidebarComponent } from './components/sidebar/sidebar.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     SignupComponent,
     DashboardComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,
