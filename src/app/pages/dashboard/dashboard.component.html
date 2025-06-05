@@ -1,0 +1,127 @@
+<mat-toolbar class="navbar">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="showFiller = !showFiller"
+  >
+    <mat-icon class="menuicon">menu</mat-icon>
+  </button>
+  <img src="../../../assets/keepicon.png" alt="" />
+  <span style="color: #5f6368; font-family: sans-serif; font-size: 22px"
+    >Keep</span
+  >
+  <span class="example-spacer"></span>
+  <div class="searchcontainer">
+    <mat-icon class="search-icon menuicon">search</mat-icon>
+    <input type="text" class="inpcontainer" placeholder="Search" />
+  </div>
+  <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon class="menuicon">view_stream</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon class="menuicon">refresh</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon"
+    aria-label="Example icon-button with heart icon"
+  >
+    <mat-icon class="menuicon">settings</mat-icon>
+  </button>
+
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon class="menuicon">apps</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-drawer-container class="example-container" autosize>
+  <mat-drawer mode="side" opened class="scontainer">
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'notes' && showFiller"
+      (click)="selectItem('notes')"
+    >
+      <mat-icon
+        class="menuicon"
+        [class.circle]="!showFiller && selectedItem === 'notes'"
+        >lightbulb</mat-icon
+      >
+      <div *ngIf="showFiller">Notes</div>
+    </div>
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'Reminders' && showFiller"
+      (click)="selectItem('Reminders')"
+    >
+      <mat-icon
+        class="menuicon"
+        [class.circle]="!showFiller && selectedItem === 'Reminders'"
+        >notifications</mat-icon
+      >
+      <div *ngIf="showFiller">Reminders</div>
+    </div>
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'label' && showFiller"
+      (click)="selectItem('label')"
+    >
+      <mat-icon
+        class="menuicon"
+        [class.circle]="!showFiller && selectedItem === 'label'"
+        >label</mat-icon
+      >
+      <div *ngIf="showFiller">Label</div>
+    </div>
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'edit' && showFiller"
+      (click)="selectItem('edit')"
+    >
+      <mat-icon
+        class="menuicon"
+        [class.circle]="!showFiller && selectedItem === 'edit'"
+        >edit</mat-icon
+      >
+      <div *ngIf="showFiller">Edit Labels</div>
+    </div>
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'archive' && showFiller"
+      (click)="selectItem('archive')"
+    >
+      <mat-icon
+        class="menuicon"
+        [class.circle]="!showFiller && selectedItem === 'archive'"
+        >archive</mat-icon
+      >
+      <div *ngIf="showFiller">Archive</div>
+    </div>
+    <div
+      class="sidecontainer"
+      [class.selected]="selectedItem === 'Bin' && showFiller"
+      (click)="selectItem('Bin')"
+    >
+      <mat-icon
+        class="menuicon"
+        [class.circle]="!showFiller && selectedItem === 'Bin'"
+        >delete</mat-icon
+      >
+      <div *ngIf="showFiller">Bin</div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content class="maincontainer">Main content</mat-drawer-content>
+</mat-drawer-container>

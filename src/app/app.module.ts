@@ -13,10 +13,18 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
-import { MatCheckboxModule } from '@angular/material/checkbox'; // Add this for checkbox
-import { HttpClientModule } from '@angular/common/http';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { DashboardComponent } from './pages/dashboard/dashboard.component'; // Add this for checkbox
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { NgIf } from '@angular/common';
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent],
+  declarations: [
+    AppComponent,
+    LoginComponent,
+    SignupComponent,
+    DashboardComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -30,7 +38,9 @@ import { HttpClientModule } from '@angular/common/http';
     MatDividerModule,
     MatInputModule,
     MatCheckboxModule, // Add this for checkbox
-    HttpClientModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    NgIf,
   ],
   providers: [],
   bootstrap: [AppComponent],
