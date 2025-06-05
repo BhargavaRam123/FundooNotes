@@ -47,4 +47,9 @@
     <mat-icon class="menuicon">apps</mat-icon>
   </button>
 </mat-toolbar>
-<app-sidebar></app-sidebar>
+<app-sidebar
+  [showFiller]="showFiller"
+  (itemSelected)="onItemSelected($event)"
+  (fillerStateChanged)="onFillerStateChanged($event)"
+  >></app-sidebar
+>

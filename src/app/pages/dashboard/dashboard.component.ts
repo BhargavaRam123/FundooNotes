@@ -7,13 +7,13 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
   showFiller = false;
   selectedItem: string = '';
-  selectItem(s: string) {
-    this.selectedItem = s;
+  onItemSelected(item: string) {
+    this.selectedItem = item;
+    console.log('Selected item:', item);
   }
-  evententer() {
-    this.showFiller = true;
-  }
-  eventleave() {
-    this.showFiller = false;
+
+  // Handle filler state from sidebar
+  onFillerStateChanged(state: boolean) {
+    this.showFiller = state;
   }
 }

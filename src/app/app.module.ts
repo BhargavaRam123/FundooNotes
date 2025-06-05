@@ -19,6 +19,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgIf } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { InputcompComponent } from './components/inputcomp/inputcomp.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +27,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     SignupComponent,
     DashboardComponent,
     SidebarComponent,
+    InputcompComponent,
   ],
   imports: [
     BrowserModule,
