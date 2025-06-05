@@ -1,1 +1,94 @@
-<p>inputcomp works!</p>
+<div class="container">
+  <div class="bcontainer">
+    <div class="searchcontainer" *ngIf="!showModal">
+      <input
+        type="text"
+        class="inpcontainer"
+        placeholder="Take a note..."
+        (focus)="toggleModal()"
+      />
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="check_box"
+        class="boxclass"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="brush"
+        class="brushclass"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="image"
+        class="imageclass"
+      ></mat-icon>
+    </div>
+    <div class="searchcontainer" *ngIf="showModal">
+      <input type="text" class="inpcontainer remborder" placeholder="Title" />
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="keep"
+        class="pin"
+      ></mat-icon>
+    </div>
+    <div class="searchcontainer" *ngIf="showModal">
+      <input
+        type="text"
+        class="inpcontainer remborder"
+        placeholder="Take a note"
+      />
+    </div>
+    <div *ngIf="showModal" class="lastcontainer">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="format_letter_spacing_wide"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="palette"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="notifications_active"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="person_add"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="image"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="archive"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="more_vert"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="undo"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="redo"
+      ></mat-icon>
+      <div>close</div>
+    </div>
+  </div>
+</div>

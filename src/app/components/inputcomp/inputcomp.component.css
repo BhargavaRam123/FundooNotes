@@ -1,0 +1,71 @@
+.container {
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.bcontainer {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px 0px;
+}
+.inpcontainer {
+  padding: 15px 10px 15px 50px;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  width: 100%;
+  box-shadow: 0px 0px 5px rgb(128, 128, 128, 0.2);
+}
+input:focus {
+  outline: none;
+  background-color: white;
+  box-shadow: none;
+}
+
+.remborder {
+  box-shadow: 0px 0px 0px white;
+}
+
+.searchcontainer {
+  position: relative;
+  width: 100%;
+}
+.boxclass {
+  position: absolute;
+  right: 15%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.brushclass {
+  position: absolute;
+  right: 10%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.imageclass {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.pin {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lastcontainer {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
