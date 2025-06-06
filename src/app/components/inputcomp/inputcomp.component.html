@@ -1,5 +1,9 @@
 <div class="container">
-  <div class="bcontainer">
+  <div
+    class="bcontainer"
+    [formGroup]="myForm"
+    [style.background-color]="selectedColor"
+  >
     <div class="searchcontainer" *ngIf="!showModal">
       <input
         type="text"
@@ -27,7 +31,13 @@
       ></mat-icon>
     </div>
     <div class="searchcontainer" *ngIf="showModal">
-      <input type="text" class="inpcontainer remborder" placeholder="Title" />
+      <input
+        type="text"
+        class="inpcontainer remborder"
+        formControlName="title"
+        placeholder="Title"
+        [style.background-color]="selectedColor"
+      />
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
@@ -40,6 +50,8 @@
         type="text"
         class="inpcontainer remborder"
         placeholder="Take a note"
+        formControlName="description"
+        [style.background-color]="selectedColor"
       />
     </div>
     <div *ngIf="showModal" class="lastcontainer">
@@ -48,11 +60,28 @@
         aria-label="Example home icon"
         fontIcon="format_letter_spacing_wide"
       ></mat-icon>
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="palette"
-      ></mat-icon>
+      <div class="palletecontainer">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="palette"
+          (click)="togglePalletModal()"
+        ></mat-icon>
+        <div class="palletemodal" *ngIf="showPalletModal">
+          <div
+            *ngFor="let color of noteColors"
+            class="color-circle"
+            [style.background-color]="color.value"
+            [style.border-color]="color.value"
+            [class.selected]="selectedColor === color.value"
+            (click)="selectColor(color.value)"
+          >
+            <div class="check" *ngIf="selectedColor === color.value">
+              <mat-icon class="check-icon">check</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
@@ -88,7 +117,7 @@
         aria-label="Example home icon"
         fontIcon="redo"
       ></mat-icon>
-      <div>close</div>
+      <div (click)="onSubmit()">close</div>
     </div>
   </div>
 </div>

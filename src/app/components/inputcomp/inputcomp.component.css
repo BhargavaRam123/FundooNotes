@@ -69,3 +69,50 @@ input:focus {
   justify-content: space-evenly;
   align-items: center;
 }
+.palletecontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.palletemodal {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  gap: 5px;
+}
+.color-circle {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.check {
+  position: absolute;
+  bottom: 100%;
+  transform: translateY(50%);
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(161, 66, 244);
+}
+.check-icon {
+  scale: 0.6;
+  color: white;
+}
+.selected {
+  border: 2px solid rgb(161, 66, 244) !important;
+}

@@ -20,6 +20,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { NgIf } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { InputcompComponent } from './components/inputcomp/inputcomp.component';
+import { MatBadgeModule } from '@angular/material/badge';
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,18 +34,19 @@ import { InputcompComponent } from './components/inputcomp/inputcomp.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule, // For FormControl
-    FormsModule, // For ngModel in checkbox
+    ReactiveFormsModule,
+    FormsModule,
     MatCardModule,
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
     MatDividerModule,
     MatInputModule,
-    MatCheckboxModule, // Add this for checkbox
+    MatCheckboxModule,
     MatToolbarModule,
     MatSidenavModule,
     NgIf,
+    MatBadgeModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
