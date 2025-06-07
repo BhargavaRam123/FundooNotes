@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NotesService } from 'src/app/services/notes_services/notes.service';
 @Component({
@@ -6,22 +6,17 @@ import { NotesService } from 'src/app/services/notes_services/notes.service';
   templateUrl: './inputcomp.component.html',
   styleUrls: ['./inputcomp.component.css'],
 })
-export class InputcompComponent {
+export class InputcompComponent implements OnInit {
+  showModal = false;
   myForm: FormGroup;
   selectedColor = '#ffffff'; // Default white background
   showPalletModal = false;
+  userNotes: any = [];
   selectColor(value: string) {
     this.selectedColor = value;
     this.myForm.get('color')?.setValue(value);
   }
 
-  constructor(private fb: FormBuilder, private notesApi: NotesService) {
-    this.myForm = fb.group({
-      title: ['', [Validators.required, Validators.minLength(2)]],
-      description: ['', [Validators.required, Validators.minLength(2)]],
-      color: [''],
-    });
-  }
   noteColors = [
     { name: 'Default', value: '#ffffff' },
     { name: 'Red', value: '#f28b82' },
@@ -36,22 +31,46 @@ export class InputcompComponent {
     { name: 'Brown', value: '#e6c9a8' },
     { name: 'Gray', value: '#e8eaed' },
   ];
+
+  constructor(private fb: FormBuilder, private notesApi: NotesService) {
+    this.myForm = fb.group({
+      title: ['', [Validators.required, Validators.minLength(2)]],
+      description: ['', [Validators.required, Validators.minLength(2)]],
+      color: [''],
+    });
+  }
+
+  ngOnInit(): void {
+    this.notesApi.getUserNotes().subscribe({
+      next: (res: any) => {
+        console.log('getting notes', res);
+        this.userNotes = [...this.userNotes, ...res.data.data];
+      },
+      error: (err) => {
+        console.log('error occured while getting notes', err);
+      },
+    });
+  }
   togglePalletModal() {
     this.showPalletModal = !this.showPalletModal;
   }
   onSubmit() {
     console.log(this.myForm.value);
-    const data = { ...this.myForm.value, isPined: true, isArchived: true };
-    this.notesApi.postNotes(data).subscribe({
-      next: (res) => {
-        console.log('api response', res);
-      },
-      error: (err) => {
-        console.log('api response', err);
-      },
-    });
+    if (this.myForm.value.title && this.myForm.value.description) {
+      const data = { ...this.myForm.value, isPined: true, isArchived: true };
+      this.notesApi.postNotes(data).subscribe({
+        next: (res) => {
+          console.log('api response', res);
+        },
+        error: (err) => {
+          console.log('api response', err);
+        },
+      });
+    } else {
+      this.showModal = false;
+    }
   }
-  showModal = false;
+
   toggleModal() {
     this.showModal = !this.showModal;
   }
