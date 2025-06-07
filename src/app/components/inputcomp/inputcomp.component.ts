@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { NotesService } from 'src/app/services/notes_services/notes.service';
 @Component({
   selector: 'app-inputcomp',
   templateUrl: './inputcomp.component.html',
@@ -14,7 +15,7 @@ export class InputcompComponent {
     this.myForm.get('color')?.setValue(value);
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private notesApi: NotesService) {
     this.myForm = fb.group({
       title: ['', [Validators.required, Validators.minLength(2)]],
       description: ['', [Validators.required, Validators.minLength(2)]],
@@ -40,6 +41,15 @@ export class InputcompComponent {
   }
   onSubmit() {
     console.log(this.myForm.value);
+    const data = { ...this.myForm.value, isPined: true, isArchived: true };
+    this.notesApi.postNotes(data).subscribe({
+      next: (res) => {
+        console.log('api response', res);
+      },
+      error: (err) => {
+        console.log('api response', err);
+      },
+    });
   }
   showModal = false;
   toggleModal() {
