@@ -11,6 +11,7 @@ export class InputcompComponent {
   showPalletModal = false;
   selectColor(value: string) {
     this.selectedColor = value;
+    this.myForm.get('color')?.setValue(value);
   }
 
   constructor(private fb: FormBuilder) {

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms'; // Add FormsModule for ngModel
 
@@ -21,6 +21,9 @@ import { NgIf } from '@angular/common';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { InputcompComponent } from './components/inputcomp/inputcomp.component';
 import { MatBadgeModule } from '@angular/material/badge';
+import { HttpClientModule } from '@angular/common/http';
+import { NgxSpinnerModule } from 'ngx-spinner';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +50,10 @@ import { MatBadgeModule } from '@angular/material/badge';
     MatSidenavModule,
     NgIf,
     MatBadgeModule,
+    HttpClientModule,
+    NgxSpinnerModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
   bootstrap: [AppComponent],
 })

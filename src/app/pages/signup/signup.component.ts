@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UserService } from 'src/app/services/user_services/user.service';
 import { Router } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
     control: FormControl | null,
@@ -24,7 +25,11 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent {
-  constructor(private signup: UserService, private router: Router) {}
+  constructor(
+    private signup: UserService,
+    private router: Router,
+    private spinner: NgxSpinnerService
+  ) {}
   firstNameFormControl = new FormControl('', [
     Validators.required,
     Validators.minLength(2),
@@ -80,6 +85,7 @@ export class SignupComponent {
   }
 
   onNext() {
+    this.spinner.show();
     if (this.isFormValid()) {
       console.log('Form is valid, proceed to next step');
       console.log({
@@ -99,9 +105,12 @@ export class SignupComponent {
         .subscribe({
           next: (response) => {
             console.log('response value', response);
+            this.spinner.hide();
+            this.router.navigate(['login']);
           },
           error: (err) => {
             console.log('error value', err);
+            this.spinner.hide();
           },
         });
     }
