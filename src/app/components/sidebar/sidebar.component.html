@@ -1,75 +1,136 @@
-<mat-drawer-container class="example-container" autosize>
-  <mat-drawer
-    mode="side"
-    opened
+<div class="parent">
+  <div
     class="scontainer"
-    [class.expanded]="showFiller"
     (mouseenter)="evententer()"
     (mouseleave)="eventleave()"
   >
     <div
-      class="sidecontainer"
-      [class.selected]="selectedItem === 'notes' && showFiller"
-      [class.exps]="selectedItem === 'notes' && !showFiller"
-      [class.shover]="selectedItem !== 'notes' && showFiller"
+      class="select"
       (click)="selectItem('notes')"
+      [class.case1]="selectedItem === 'notes' && showFiller"
+      [class.case2]="selectedItem === 'notes' && !showFiller"
     >
       <mat-icon>lightbulb_outline</mat-icon>
-      <div *ngIf="showFiller">Notes</div>
     </div>
     <div
-      class="sidecontainer"
-      [class.selected]="selectedItem === 'Reminders' && showFiller"
-      [class.exps]="selectedItem === 'Reminders' && !showFiller"
-      [class.shover]="selectedItem !== 'Reminders' && showFiller"
+      class="select"
       (click)="selectItem('Reminders')"
+      [class.case1]="selectedItem === 'Reminders' && showFiller"
+      [class.case2]="selectedItem === 'Reminders' && !showFiller"
     >
       <mat-icon>notifications_outline</mat-icon>
-      <div *ngIf="showFiller">Reminders</div>
     </div>
     <div
-      class="sidecontainer"
-      [class.selected]="selectedItem === 'label' && showFiller"
-      [class.exps]="selectedItem === 'label' && !showFiller"
-      [class.shover]="selectedItem !== 'label' && showFiller"
-      (click)="selectItem('label')"
+      class="select"
+      (click)="selectItem('Labels')"
+      [class.case1]="selectedItem === 'Labels' && showFiller"
+      [class.case2]="selectedItem === 'Labels' && !showFiller"
     >
       <mat-icon>label_outline</mat-icon>
-      <div *ngIf="showFiller">Label</div>
     </div>
     <div
-      class="sidecontainer"
-      [class.selected]="selectedItem === 'edit' && showFiller"
-      [class.exps]="selectedItem === 'edit' && !showFiller"
-      [class.shover]="selectedItem !== 'edit' && showFiller"
-      (click)="selectItem('edit')"
+      class="select"
+      (click)="selectItem('editLabels')"
+      [class.case1]="selectedItem === 'editLabels' && showFiller"
+      [class.case2]="selectedItem === 'editLabels' && !showFiller"
     >
       <mat-icon>edit_outline</mat-icon>
-      <div *ngIf="showFiller">Edit Labels</div>
     </div>
     <div
-      class="sidecontainer"
-      [class.selected]="selectedItem === 'archive' && showFiller"
-      [class.exps]="selectedItem === 'archive' && !showFiller"
-      [class.shover]="selectedItem !== 'archive' && showFiller"
-      [class.shover]="selectedItem !== 'archive' && showFiller"
-      (click)="selectItem('archive')"
+      class="select"
+      (click)="selectItem('Notifications')"
+      [class.case1]="selectedItem === 'Notifications' && showFiller"
+      [class.case2]="selectedItem === 'Notifications' && !showFiller"
+    >
+      <mat-icon>notifications_outline</mat-icon>
+    </div>
+    <div
+      class="select"
+      (click)="selectItem('Archive')"
+      [class.case1]="selectedItem === 'Archive' && showFiller"
+      [class.case2]="selectedItem === 'Archive' && !showFiller"
     >
       <mat-icon>archive_outline</mat-icon>
-      <div *ngIf="showFiller">Archive</div>
     </div>
     <div
-      class="sidecontainer"
-      [class.selected]="selectedItem === 'Bin' && showFiller"
-      [class.exps]="selectedItem === 'Bin' && !showFiller"
-      [class.shover]="selectedItem !== 'Bin' && showFiller"
+      class="select"
       (click)="selectItem('Bin')"
+      [class.case1]="selectedItem === 'Bin' && showFiller"
+      [class.case2]="selectedItem === 'Bin' && !showFiller"
     >
       <mat-icon>delete</mat-icon>
-      <div *ngIf="showFiller">Bin</div>
     </div>
-  </mat-drawer>
-  <mat-drawer-content class="maincontainer">
-    <app-inputcomp></app-inputcomp>
-  </mat-drawer-content>
-</mat-drawer-container>
+  </div>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav
+      mode="side"
+      class="setwidth"
+      [opened]="showFiller"
+      #drawer
+      (mouseenter)="evententer()"
+      (mouseleave)="eventleave()"
+    >
+      <div class="togglescontainer">
+        <div
+          class="tselect"
+          (click)="selectItem('notes')"
+          [class.tcase1]="selectedItem === 'notes' && showFiller"
+          [class.tcase2]="selectedItem === 'notes' && !showFiller"
+        >
+          Notes
+        </div>
+        <div
+          class="tselect"
+          (click)="selectItem('Reminders')"
+          [class.tcase1]="selectedItem === 'Reminders' && showFiller"
+          [class.tcase2]="selectedItem === 'Reminders' && !showFiller"
+        >
+          Reminders
+        </div>
+        <div
+          class="tselect"
+          (click)="selectItem('Labels')"
+          [class.tcase1]="selectedItem === 'Labels' && showFiller"
+          [class.tcase2]="selectedItem === 'Labels' && !showFiller"
+        >
+          Labels
+        </div>
+        <div
+          class="tselect"
+          (click)="selectItem('editLabels')"
+          [class.tcase1]="selectedItem === 'editLabels' && showFiller"
+          [class.tcase2]="selectedItem === 'editLabels' && !showFiller"
+        >
+          Edit Labels
+        </div>
+        <div
+          class="tselect"
+          (click)="selectItem('Notifications')"
+          [class.tcase1]="selectedItem === 'Notifications' && showFiller"
+          [class.tcase2]="selectedItem === 'Notifications' && !showFiller"
+        >
+          Notifications
+        </div>
+        <div
+          class="tselect"
+          (click)="selectItem('Archive')"
+          [class.tcase1]="selectedItem === 'Archive' && showFiller"
+          [class.tcase2]="selectedItem === 'Archive' && !showFiller"
+        >
+          Archive
+        </div>
+        <div
+          class="tselect"
+          (click)="selectItem('Bin')"
+          [class.tcase1]="selectedItem === 'Bin' && showFiller"
+          [class.tcase2]="selectedItem === 'Bin' && !showFiller"
+        >
+          Bin
+        </div>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="maincontainer">
+      <app-inputcomp></app-inputcomp
+    ></mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

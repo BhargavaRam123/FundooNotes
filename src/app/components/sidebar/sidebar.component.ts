@@ -10,7 +10,7 @@ export class SidebarComponent {
   @Output() itemSelected = new EventEmitter<string>();
   @Output() fillerStateChanged = new EventEmitter<boolean>();
 
-  selectedItem: string = '';
+  selectedItem: string = 'notes';
 
   selectItem(s: string) {
     this.selectedItem = s;

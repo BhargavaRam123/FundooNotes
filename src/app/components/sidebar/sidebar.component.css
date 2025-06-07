@@ -1,45 +1,60 @@
 .example-container {
+  height: 100vh;
+  width: 95%;
+}
+.parent {
+  display: flex;
+}
+.setwidth {
+  width: 100px;
+}
+.scontainer {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  width: 5%;
+  border: 0px;
+}
+.togglescontainer {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
   width: 100%;
-  height: 100%;
+  border: 0px;
 }
 
-.scontainer {
-  width: 80px;
-  border: 0px;
-  transition: width 0.3s linear;
+.tselect {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  cursor: pointer;
 }
-.scontainer.expanded {
-  width: 200px;
-  /* transform: scaleX(1); */
-  box-shadow: 1px 0px 5px #5f6368;
+.tcase1 {
+  background-color: rgb(254, 239, 195);
+  border-top-right-radius: 25px;
+  border-bottom-right-radius: 25px;
+}
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  cursor: pointer;
+}
+.case1 {
+  width: 100%;
+  background-color: rgb(254, 239, 195);
+  justify-content: center;
+}
+.case2 {
+  border-radius: 50%;
+  background-color: rgb(254, 239, 195);
 }
 
 .maincontainer {
   background-color: white;
-}
-
-.sidecontainer {
-  padding: 20px;
-  height: 30px;
-  width: 30px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.selected {
-  background-color: rgb(254, 239, 195);
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-  padding-right: 0;
-  width: 91%;
-}
-.shover {
-  width: 100%;
-}
-.exps {
-  justify-content: center;
-  background-color: rgb(254, 239, 195);
-
-  border-radius: 50%;
 }
