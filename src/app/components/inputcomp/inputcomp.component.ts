@@ -12,9 +12,19 @@ export class InputcompComponent implements OnInit {
   selectedColor = '#ffffff'; // Default white background
   showPalletModal = false;
   userNotes: any = [];
+  pined = false;
+  archive = false;
   selectColor(value: string) {
     this.selectedColor = value;
     this.myForm.get('color')?.setValue(value);
+  }
+  selectPin() {
+    this.pined = !this.pined;
+    console.log(this.pined);
+  }
+  selectArchive() {
+    this.archive = !this.archive;
+    console.log(this.archive);
   }
 
   noteColors = [
@@ -57,7 +67,11 @@ export class InputcompComponent implements OnInit {
   onSubmit() {
     console.log(this.myForm.value);
     if (this.myForm.value.title && this.myForm.value.description) {
-      const data = { ...this.myForm.value, isPined: true, isArchived: true };
+      const data = {
+        ...this.myForm.value,
+        isPined: this.pined,
+        isArchived: this.archive,
+      };
       this.notesApi.postNotes(data).subscribe({
         next: (res) => {
           console.log('api response', res);

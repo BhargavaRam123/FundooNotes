@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
 .container {
   height: 30%;
   display: flex;
@@ -13,6 +15,10 @@
   flex-direction: column;
   border-radius: 5px;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px 0px;
+}
+
+.addHeight {
+  height: 80%;
 }
 .inpcontainer {
   padding: 15px 10px 15px 50px;
@@ -115,4 +121,8 @@ input:focus {
 }
 .selected {
   border: 2px solid rgb(161, 66, 244) !important;
+}
+.seltoggle {
+  color: black;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
 }

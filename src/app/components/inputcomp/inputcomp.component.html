@@ -3,6 +3,7 @@
     class="bcontainer"
     [formGroup]="myForm"
     [style.background-color]="selectedColor"
+    [class.addHeight]="showModal"
   >
     <div class="searchcontainer" *ngIf="!showModal">
       <input
@@ -43,6 +44,8 @@
         aria-label="Example home icon"
         fontIcon="keep"
         class="pin"
+        [class.seltoggle]="pined"
+        (click)="selectPin()"
       ></mat-icon>
     </div>
     <div class="searchcontainer" *ngIf="showModal">
@@ -55,18 +58,21 @@
       />
     </div>
     <div *ngIf="showModal" class="lastcontainer">
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="format_letter_spacing_wide"
-      ></mat-icon>
-      <div class="palletecontainer">
+      <button mat-icon-button>
         <mat-icon
           aria-hidden="false"
           aria-label="Example home icon"
-          fontIcon="palette"
-          (click)="togglePalletModal()"
+          fontIcon="format_letter_spacing_wide"
         ></mat-icon>
+      </button>
+      <div class="palletecontainer">
+        <button mat-icon-button (click)="togglePalletModal()">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="palette"
+          ></mat-icon>
+        </button>
         <div class="palletemodal" *ngIf="showPalletModal">
           <div
             *ngFor="let color of noteColors"
@@ -82,41 +88,57 @@
           </div>
         </div>
       </div>
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="notifications_active"
-      ></mat-icon>
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="person_add"
-      ></mat-icon>
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="image"
-      ></mat-icon>
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="archive"
-      ></mat-icon>
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="more_vert"
-      ></mat-icon>
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="undo"
-      ></mat-icon>
-      <mat-icon
-        aria-hidden="false"
-        aria-label="Example home icon"
-        fontIcon="redo"
-      ></mat-icon>
+
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="notifications_active"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="person_add"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="image"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button (click)="selectArchive()">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="archive"
+          [class.seltoggle]="archive"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="more_vert"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="undo"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="redo"
+        ></mat-icon>
+      </button>
       <div (click)="onSubmit()">close</div>
     </div>
   </div>
