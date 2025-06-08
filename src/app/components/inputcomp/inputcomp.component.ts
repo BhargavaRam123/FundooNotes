@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NotesService } from 'src/app/services/notes_services/notes.service';
 @Component({
@@ -6,12 +6,11 @@ import { NotesService } from 'src/app/services/notes_services/notes.service';
   templateUrl: './inputcomp.component.html',
   styleUrls: ['./inputcomp.component.css'],
 })
-export class InputcompComponent implements OnInit {
+export class InputcompComponent {
   showModal = false;
   myForm: FormGroup;
   selectedColor = '#ffffff'; // Default white background
   showPalletModal = false;
-  userNotes: any = [];
   pined = false;
   archive = false;
   selectColor(value: string) {
@@ -50,17 +49,6 @@ export class InputcompComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.notesApi.getUserNotes().subscribe({
-      next: (res: any) => {
-        console.log('getting notes', res);
-        this.userNotes = [...this.userNotes, ...res.data.data];
-      },
-      error: (err) => {
-        console.log('error occured while getting notes', err);
-      },
-    });
-  }
   togglePalletModal() {
     this.showPalletModal = !this.showPalletModal;
   }

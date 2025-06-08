@@ -7,6 +7,7 @@ import { Component, Input, EventEmitter, Output } from '@angular/core';
 })
 export class SidebarComponent {
   @Input() showFiller = false;
+  @Input() viewType: any;
   @Output() itemSelected = new EventEmitter<string>();
   @Output() fillerStateChanged = new EventEmitter<boolean>();
 

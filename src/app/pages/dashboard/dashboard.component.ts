@@ -7,6 +7,15 @@ import { Component } from '@angular/core';
 })
 export class DashboardComponent {
   showFiller = false;
+  viewType = 'grid';
+  toggleviewType() {
+    console.log('clicked on the view', this.viewType);
+    if (this.viewType === 'grid') {
+      this.viewType = 'list';
+    } else {
+      this.viewType = 'grid';
+    }
+  }
   selectedItem: string = '';
   onItemSelected(item: string) {
     this.selectedItem = item;

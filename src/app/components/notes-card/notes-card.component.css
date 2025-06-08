@@ -1,0 +1,9 @@
+.card {
+  width: 250px;
+  height: 150px;
+  box-shadow: 0px 0px 5px rgb(128, 128, 128, 0.2);
+  border-radius: 5px;
+}
+.lcard {
+  width: 500px;
+}

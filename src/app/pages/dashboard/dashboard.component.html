@@ -21,8 +21,12 @@
     mat-icon-button
     class="example-icon favorite-icon"
     aria-label="Example icon-button with heart icon"
+    (click)="toggleviewType()"
   >
-    <mat-icon class="menuicon">view_stream</mat-icon>
+    <mat-icon
+      class="menuicon"
+      [fontIcon]="viewType === 'grid' ? 'view_stream' : 'grid_view'"
+    ></mat-icon>
   </button>
   <button
     mat-icon-button
@@ -49,6 +53,7 @@
 </mat-toolbar>
 <app-sidebar
   [showFiller]="showFiller"
+  [viewType]="viewType"
   (itemSelected)="onItemSelected($event)"
   (fillerStateChanged)="onFillerStateChanged($event)"
   >></app-sidebar

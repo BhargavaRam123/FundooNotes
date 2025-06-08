@@ -1,0 +1,8 @@
+<div class="container" [class.list]="viewType === 'list'">
+  <app-notes-card
+    *ngFor="let note of userNotes"
+    [name]="note.name"
+    [description]="note.description"
+    [viewType]="viewType"
+  ></app-notes-card>
+</div>

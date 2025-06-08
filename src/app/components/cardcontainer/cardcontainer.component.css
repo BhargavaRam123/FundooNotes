@@ -1,0 +1,12 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding-left: 10px;
+}
+.list {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}

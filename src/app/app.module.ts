@@ -23,6 +23,8 @@ import { InputcompComponent } from './components/inputcomp/inputcomp.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { CardcontainerComponent } from './components/cardcontainer/cardcontainer.component';
+import { NotesCardComponent } from './components/notes-card/notes-card.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +34,8 @@ import { NgxSpinnerModule } from 'ngx-spinner';
     DashboardComponent,
     SidebarComponent,
     InputcompComponent,
+    CardcontainerComponent,
+    NotesCardComponent,
   ],
   imports: [
     BrowserModule,
