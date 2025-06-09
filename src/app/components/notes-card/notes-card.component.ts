@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-notes-card',
@@ -6,7 +7,51 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./notes-card.component.css'],
 })
 export class NotesCardComponent {
-  @Input() name: any;
+  @Input() title: any;
   @Input() description: any;
   @Input() viewType: any;
+  myForm: FormGroup;
+  archive = false;
+  glowIcons = 0;
+  selectedColor = '#ffffff'; // Default white background
+  showPalletModal = false;
+  noteColors = [
+    { name: 'Default', value: '#ffffff' },
+    { name: 'Red', value: '#f28b82' },
+    { name: 'Orange', value: '#fbbc04' },
+    { name: 'Yellow', value: '#fff475' },
+    { name: 'Green', value: '#ccff90' },
+    { name: 'Teal', value: '#a7ffeb' },
+    { name: 'Blue', value: '#cbf0f8' },
+    { name: 'Dark Blue', value: '#aecbfa' },
+    { name: 'Purple', value: '#d7aefb' },
+    { name: 'Pink', value: '#fdcfe8' },
+    { name: 'Brown', value: '#e6c9a8' },
+    { name: 'Gray', value: '#e8eaed' },
+  ];
+
+  constructor(private fb: FormBuilder) {
+    this.myForm = fb.group({
+      color: [''],
+    });
+  }
+
+  selectArchive() {
+    this.archive = !this.archive;
+    console.log(this.archive);
+  }
+  togglePalletModal() {
+    this.showPalletModal = !this.showPalletModal;
+  }
+  selectColor(value: string) {
+    this.selectedColor = value;
+    this.myForm.get('color')?.setValue(value);
+  }
+
+  onMouseLeave() {
+    this.glowIcons = 0;
+  }
+  onMouseEnter() {
+    this.glowIcons = 1;
+  }
 }

@@ -9,44 +9,25 @@ import { NotesService } from 'src/app/services/notes_services/notes.service';
 export class CardcontainerComponent implements OnInit {
   @Input() viewType: any;
   userNotes: any = [];
-
-  constructor(private notesApi: NotesService) {
-    this.userNotes = [
-      {
-        name: 'bhargav',
-        description: 'description',
-      },
-      {
-        name: 'bhargav',
-        description: 'description',
-      },
-      {
-        name: 'bhargav',
-        description: 'description',
-      },
-      {
-        name: 'bhargav',
-        description: 'description',
-      },
-      {
-        name: 'bhargav',
-        description: 'description',
-      },
-      {
-        name: 'bhargav',
-        description: 'description',
-      },
-    ];
-  }
+  pinedNotes: any = [];
+  nonPinedNotes: any = [];
+  constructor(private notesApi: NotesService) {}
   ngOnInit(): void {
     this.notesApi.getUserNotes().subscribe({
       next: (res: any) => {
         console.log('getting notes', res);
-        this.userNotes = [...this.userNotes, ...res.data.data];
+        this.userNotes = [...res.data.data];
+        this.countPined();
       },
       error: (err) => {
         console.log('error occured while getting notes', err);
       },
     });
+  }
+  countPined() {
+    this.pinedNotes = this.userNotes.filter((obj: any) => obj.isPined === true);
+    this.nonPinedNotes = this.userNotes.filter(
+      (obj: any) => obj.isPined !== true
+    );
   }
 }

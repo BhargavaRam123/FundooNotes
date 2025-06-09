@@ -1,8 +1,89 @@
-<div class="card" [class.lcard]="viewType === 'list'">
-  <div>
-    {{ name }}
+<div
+  class="card"
+  [class.lcard]="viewType === 'list'"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <div class="scont1">
+    <div>
+      {{ title }}
+    </div>
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Example home icon"
+      fontIcon="keep"
+      class="pin"
+      [style.opacity]="glowIcons"
+    ></mat-icon>
   </div>
-  <div>
+  <div class="scont2">
     {{ description }}
+  </div>
+  <div class="hovericons">
+    <div class="palletecontainer glow" [style.opacity]="glowIcons">
+      <button mat-icon-button (click)="togglePalletModal()">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="palette"
+        ></mat-icon>
+      </button>
+      <div class="palletemodal" *ngIf="showPalletModal">
+        <div
+          *ngFor="let color of noteColors"
+          class="color-circle"
+          [style.background-color]="color.value"
+          [style.border-color]="color.value"
+          [class.selected]="selectedColor === color.value"
+          (click)="selectColor(color.value)"
+        >
+          <div class="check" *ngIf="selectedColor === color.value">
+            <mat-icon class="check-icon">check</mat-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="notifications_active"
+      ></mat-icon>
+    </button>
+    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="person_add"
+      ></mat-icon>
+    </button>
+    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="image"
+      ></mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      (click)="selectArchive()"
+      [style.opacity]="glowIcons"
+      class="glow"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="archive"
+        [class.seltoggle]="archive"
+      ></mat-icon>
+    </button>
+    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="more_vert"
+      ></mat-icon>
+    </button>
   </div>
 </div>

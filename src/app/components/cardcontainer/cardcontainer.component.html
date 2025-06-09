@@ -1,8 +1,24 @@
-<div class="container" [class.list]="viewType === 'list'">
-  <app-notes-card
-    *ngFor="let note of userNotes"
-    [name]="note.name"
-    [description]="note.description"
-    [viewType]="viewType"
-  ></app-notes-card>
+<div class="maincontainer">
+  <div *ngIf="pinedNotes.length > 0">
+    <div>Pined Notes</div>
+    <div class="container" [class.list]="viewType === 'list'">
+      <app-notes-card
+        *ngFor="let note of pinedNotes"
+        [title]="note.title"
+        [description]="note.description"
+        [viewType]="viewType"
+      ></app-notes-card>
+    </div>
+  </div>
+  <div *ngIf="nonPinedNotes.length > 0">
+    <div>Non Pined Notes</div>
+    <div class="container" [class.list]="viewType === 'list'">
+      <app-notes-card
+        *ngFor="let note of nonPinedNotes"
+        [title]="note.title"
+        [description]="note.description"
+        [viewType]="viewType"
+      ></app-notes-card>
+    </div>
+  </div>
 </div>
