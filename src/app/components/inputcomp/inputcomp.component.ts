@@ -1,18 +1,27 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NotesService } from 'src/app/services/notes_services/notes.service';
+import { ViewTypeService } from 'src/app/services/neededInfo_Service/view-type.service';
 @Component({
   selector: 'app-inputcomp',
   templateUrl: './inputcomp.component.html',
   styleUrls: ['./inputcomp.component.css'],
 })
-export class InputcompComponent {
+export class InputcompComponent implements OnInit {
+  ngOnInit(): void {
+    this.viewVal = this.view.viewType$.subscribe((value) => {
+      this.viewVal = value;
+      console.log('heelo.....', value);
+    });
+    console.log('view type value', this.viewVal);
+  }
   showModal = false;
   myForm: FormGroup;
   selectedColor = '#ffffff'; // Default white background
   showPalletModal = false;
   pined = false;
   archive = false;
+  viewVal: any;
   selectColor(value: string) {
     this.selectedColor = value;
     this.myForm.get('color')?.setValue(value);
@@ -41,7 +50,11 @@ export class InputcompComponent {
     { name: 'Gray', value: '#e8eaed' },
   ];
 
-  constructor(private fb: FormBuilder, private notesApi: NotesService) {
+  constructor(
+    private fb: FormBuilder,
+    private notesApi: NotesService,
+    private view: ViewTypeService
+  ) {
     this.myForm = fb.group({
       title: ['', [Validators.required, Validators.minLength(2)]],
       description: ['', [Validators.required, Validators.minLength(2)]],

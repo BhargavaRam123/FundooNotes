@@ -1,15 +1,47 @@
 .maincontainer {
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 150px;
+  gap: 50px;
 }
 
 .container {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding-left: 10px;
 }
 .list {
   flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
+}
+
+.pinhighlight {
+  position: relative;
+  padding-bottom: 10px;
+  color: rgb(95, 99, 104);
+  font-size: 0.6875rem;
+  font-weight: 500;
+  padding-left: 20px;
+}
+
+.pinhighlighte {
+  right: 200px;
+}
+.mcontainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.maincontainerlist {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-left: 0px;
+  gap: 50px;
+}
+
+@media only screen and (max-width: 850px) {
 }

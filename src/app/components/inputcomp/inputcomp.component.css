@@ -8,7 +8,7 @@
   flex-direction: column;
 }
 .bcontainer {
-  width: 50%;
+  width: 43%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,19 +46,20 @@ input:focus {
 }
 .boxclass {
   position: absolute;
-  right: 15%;
+  right: 20%;
   top: 50%;
   transform: translateY(-50%);
 }
 .brushclass {
+  opacity: 0.3;
   position: absolute;
-  right: 10%;
+  right: 12%;
   top: 50%;
   transform: translateY(-50%);
 }
 .imageclass {
   position: absolute;
-  right: 5%;
+  right: 4%;
   top: 50%;
   transform: translateY(-50%);
 }

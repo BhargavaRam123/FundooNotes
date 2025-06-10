@@ -6,7 +6,8 @@
   display: flex;
 }
 .setwidth {
-  width: 100px;
+  width: 200px;
+  box-shadow: 5px 0px 5px rgb(128, 128, 128, 0.2);
 }
 .scontainer {
   padding-top: 10px;
