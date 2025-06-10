@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ViewTypeService } from 'src/app/services/neededInfo_Service/view-type.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -8,12 +8,16 @@ import { Component } from '@angular/core';
 export class DashboardComponent {
   showFiller = false;
   viewType = 'grid';
+  constructor(private viewService: ViewTypeService) {}
+
   toggleviewType() {
     console.log('clicked on the view', this.viewType);
     if (this.viewType === 'grid') {
       this.viewType = 'list';
+      this.viewService.setViewType('list');
     } else {
       this.viewType = 'grid';
+      this.viewService.setViewType('grid');
     }
   }
   selectedItem: string = '';
