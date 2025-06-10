@@ -16,19 +16,19 @@
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="check_box"
-        class="boxclass"
+        class="boxclass material-symbols-outlined"
       ></mat-icon>
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="brush"
-        class="brushclass"
+        class="brushclass material-symbols-outlined"
       ></mat-icon>
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="image"
-        class="imageclass"
+        class="imageclass material-symbols-outlined"
       ></mat-icon>
     </div>
     <div class="searchcontainer" *ngIf="showModal">
@@ -43,7 +43,7 @@
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="keep"
-        class="pin"
+        class="pin material-symbols-outlined"
         [class.seltoggle]="pined"
         (click)="selectPin()"
       ></mat-icon>
@@ -63,6 +63,7 @@
           aria-hidden="false"
           aria-label="Example home icon"
           fontIcon="format_letter_spacing_wide"
+          class="material-symbols-outlined"
         ></mat-icon>
       </button>
       <div class="palletecontainer">
@@ -71,6 +72,7 @@
             aria-hidden="false"
             aria-label="Example home icon"
             fontIcon="palette"
+            class="material-symbols-outlined"
           ></mat-icon>
         </button>
         <div class="palletemodal" *ngIf="showPalletModal">
@@ -94,6 +96,7 @@
           aria-hidden="false"
           aria-label="Example home icon"
           fontIcon="notifications_active"
+          class="material-symbols-outlined"
         ></mat-icon>
       </button>
       <button mat-icon-button>
@@ -101,6 +104,7 @@
           aria-hidden="false"
           aria-label="Example home icon"
           fontIcon="person_add"
+          class="material-symbols-outlined"
         ></mat-icon>
       </button>
       <button mat-icon-button>
@@ -108,6 +112,7 @@
           aria-hidden="false"
           aria-label="Example home icon"
           fontIcon="image"
+          class="material-symbols-outlined"
         ></mat-icon>
       </button>
       <button mat-icon-button (click)="selectArchive()">
@@ -116,6 +121,7 @@
           aria-label="Example home icon"
           fontIcon="archive"
           [class.seltoggle]="archive"
+          class="material-symbols-outlined"
         ></mat-icon>
       </button>
       <button mat-icon-button>
@@ -123,6 +129,7 @@
           aria-hidden="false"
           aria-label="Example home icon"
           fontIcon="more_vert"
+          class="material-symbols-outlined"
         ></mat-icon>
       </button>
       <button mat-icon-button>
@@ -130,13 +137,16 @@
           aria-hidden="false"
           aria-label="Example home icon"
           fontIcon="undo"
+          class="material-symbols-outlined"
         ></mat-icon>
       </button>
       <button mat-icon-button>
         <mat-icon
+          class="material-symbols-outlined"
           aria-hidden="false"
           aria-label="Example home icon"
           fontIcon="redo"
+          class="material-symbols-outlined"
         ></mat-icon>
       </button>
       <div (click)="onSubmit()">close</div>

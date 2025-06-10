@@ -9,7 +9,19 @@ export class DashboardComponent {
   showFiller = false;
   viewType = 'grid';
   constructor(private viewService: ViewTypeService) {}
+  viewHover = false;
+  refreshHover = false;
+  settingsHover = false;
 
+  viewHoverChange(value: boolean) {
+    this.viewHover = value;
+  }
+  refreshHoverChange(value: boolean) {
+    this.refreshHover = value;
+  }
+  settingsHoverChange(value: boolean) {
+    this.settingsHover = value;
+  }
   toggleviewType() {
     console.log('clicked on the view', this.viewType);
     if (this.viewType === 'grid') {

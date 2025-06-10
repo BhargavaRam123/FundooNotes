@@ -1,6 +1,7 @@
 <div
   class="card"
   [class.lcard]="viewType === 'list'"
+  [style.background-color]="color"
   (mouseenter)="onMouseEnter()"
   (mouseleave)="onMouseLeave()"
 >
@@ -12,7 +13,7 @@
       aria-hidden="false"
       aria-label="Example home icon"
       fontIcon="keep"
-      class="pin"
+      class="pin material-symbols-outlined"
       [style.opacity]="glowIcons"
     ></mat-icon>
   </div>
@@ -23,6 +24,7 @@
     <div class="palletecontainer glow" [style.opacity]="glowIcons">
       <button mat-icon-button (click)="togglePalletModal()">
         <mat-icon
+          class="material-symbols-outlined"
           aria-hidden="false"
           aria-label="Example home icon"
           fontIcon="palette"
@@ -38,7 +40,9 @@
           (click)="selectColor(color.value)"
         >
           <div class="check" *ngIf="selectedColor === color.value">
-            <mat-icon class="check-icon">check</mat-icon>
+            <mat-icon class="check-icon material-symbols-outlined"
+              >check</mat-icon
+            >
           </div>
         </div>
       </div>
@@ -49,6 +53,7 @@
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="notifications_active"
+        class="material-symbols-outlined"
       ></mat-icon>
     </button>
     <button mat-icon-button [style.opacity]="glowIcons" class="glow">
@@ -56,6 +61,7 @@
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="person_add"
+        class="material-symbols-outlined"
       ></mat-icon>
     </button>
     <button mat-icon-button [style.opacity]="glowIcons" class="glow">
@@ -63,18 +69,20 @@
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="image"
+        class="material-symbols-outlined"
       ></mat-icon>
     </button>
     <button
       mat-icon-button
       (click)="selectArchive()"
       [style.opacity]="glowIcons"
-      class="glow"
+      class="glow material-symbols-outlined"
     >
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="archive"
+        class="material-symbols-outlined"
         [class.seltoggle]="archive"
       ></mat-icon>
     </button>
@@ -83,6 +91,7 @@
         aria-hidden="false"
         aria-label="Example home icon"
         fontIcon="more_vert"
+        class="material-symbols-outlined"
       ></mat-icon>
     </button>
   </div>

@@ -63,6 +63,7 @@ export class InputcompComponent {
       this.notesApi.postNotes(data).subscribe({
         next: (res) => {
           console.log('api response', res);
+          this.showModal = false;
         },
         error: (err) => {
           console.log('api response', err);

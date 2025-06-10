@@ -10,6 +10,7 @@ export class NotesCardComponent {
   @Input() title: any;
   @Input() description: any;
   @Input() viewType: any;
+  @Input() color: any;
   myForm: FormGroup;
   archive = false;
   glowIcons = 0;

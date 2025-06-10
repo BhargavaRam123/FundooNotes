@@ -33,3 +33,18 @@ input:focus {
   font-weight: lighter;
   color: #5f6368;
 }
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: #666666;
+  font-size: 24px;
+}
+
+.hover {
+  color: #000000 !important;
+  font-size: 24px;
+}
+
+.weightIncrease {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
+}
