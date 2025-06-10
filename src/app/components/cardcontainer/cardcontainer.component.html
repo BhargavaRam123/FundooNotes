@@ -1,6 +1,6 @@
 <div class="maincontainer">
   <div *ngIf="pinedNotes.length > 0">
-    <div>Pined Notes</div>
+    <div>PINNED</div>
     <div class="container" [class.list]="viewType === 'list'">
       <app-notes-card
         *ngFor="let note of pinedNotes"
@@ -11,7 +11,7 @@
     </div>
   </div>
   <div *ngIf="nonPinedNotes.length > 0">
-    <div>Non Pined Notes</div>
+    <div>OTHERS</div>
     <div class="container" [class.list]="viewType === 'list'">
       <app-notes-card
         *ngFor="let note of nonPinedNotes"

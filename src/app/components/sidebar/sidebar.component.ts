@@ -1,4 +1,5 @@
 import { Component, Input, EventEmitter, Output } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,10 +13,32 @@ export class SidebarComponent {
   @Output() fillerStateChanged = new EventEmitter<boolean>();
 
   selectedItem: string = 'notes';
-
+  constructor(private router: Router) {}
   selectItem(s: string) {
     this.selectedItem = s;
-    this.itemSelected.emit(s); // Emit to parent
+    // switch (this.selectedItem) {
+    //   case 'notes':
+    //     this.router.navigate(['/notes']);
+    //     break;
+    //   case 'Reminders':
+    //     this.router.navigate(['/reminders']);
+    //     break;
+    //   case 'Labels':
+    //     this.router.navigate(['/labels']);
+    //     break;
+    //   case 'editLabels':
+    //     this.router.navigate(['/edit-labels']);
+    //     break;
+    //   case 'Archive':
+    //     this.router.navigate(['/archive']);
+    //     break;
+    //   case 'Bin':
+    //     this.router.navigate(['/bin']);
+    //     break;
+    //   default:
+    //     this.router.navigate(['/notes']);
+    // }
+    this.itemSelected.emit(s);
   }
 
   evententer() {

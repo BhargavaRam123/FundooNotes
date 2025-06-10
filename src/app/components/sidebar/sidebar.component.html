@@ -36,14 +36,7 @@
     >
       <mat-icon>edit_outline</mat-icon>
     </div>
-    <div
-      class="select"
-      (click)="selectItem('Notifications')"
-      [class.case1]="selectedItem === 'Notifications' && showFiller"
-      [class.case2]="selectedItem === 'Notifications' && !showFiller"
-    >
-      <mat-icon>notifications_outline</mat-icon>
-    </div>
+
     <div
       class="select"
       (click)="selectItem('Archive')"
@@ -103,14 +96,7 @@
         >
           Edit Labels
         </div>
-        <div
-          class="tselect"
-          (click)="selectItem('Notifications')"
-          [class.tcase1]="selectedItem === 'Notifications' && showFiller"
-          [class.tcase2]="selectedItem === 'Notifications' && !showFiller"
-        >
-          Notifications
-        </div>
+
         <div
           class="tselect"
           (click)="selectItem('Archive')"
