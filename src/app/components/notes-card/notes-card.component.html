@@ -81,12 +81,18 @@
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
-        fontIcon="archive"
+        [fontIcon]="isArchived ? 'unarchive' : 'archive'"
         class="material-symbols-outlined"
         [class.seltoggle]="archive"
       ></mat-icon>
     </button>
-    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+    <!-- <button mat-icon-button [style.opacity]="glowIcons" class="glow"> -->
+    <button
+      mat-button
+      [matMenuTriggerFor]="menu"
+      [style.opacity]="glowIcons"
+      class="glow"
+    >
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
@@ -94,5 +100,15 @@
         class="material-symbols-outlined"
       ></mat-icon>
     </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Delete note</button>
+      <button mat-menu-item>Add label</button>
+      <button mat-menu-item>Add drawing</button>
+      <button mat-menu-item>Make a copy</button>
+      <button mat-menu-item>Show tick boxes</button>
+      <button mat-menu-item>Copy to Google Docs</button>
+      <button mat-menu-item>Version history</button>
+    </mat-menu>
+    <!-- </button> -->
   </div>
 </div>

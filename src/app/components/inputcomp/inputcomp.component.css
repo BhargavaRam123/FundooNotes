@@ -6,6 +6,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* background-color: red; */
 }
 .bcontainer {
   width: 43%;
@@ -132,6 +133,11 @@ input:focus {
   font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
   color: #666666;
   font-size: 24px;
+}
+
+.closecontainer {
+  cursor: pointer;
+  color: #666666;
 }
 
 @media only screen and (max-width: 1050px) {

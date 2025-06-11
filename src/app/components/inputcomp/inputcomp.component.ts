@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { NotesService } from 'src/app/services/notes_services/notes.service';
 import { ViewTypeService } from 'src/app/services/neededInfo_Service/view-type.service';
+import { Route, Router } from '@angular/router';
+
 @Component({
   selector: 'app-inputcomp',
   templateUrl: './inputcomp.component.html',
@@ -32,6 +34,25 @@ export class InputcompComponent implements OnInit {
   }
   selectArchive() {
     this.archive = !this.archive;
+    if (this.myForm.value.title && this.myForm.value.description) {
+      const data = {
+        ...this.myForm.value,
+        isPined: this.pined,
+        isArchived: this.archive,
+      };
+      this.notesApi.postNotes(data).subscribe({
+        next: (res) => {
+          console.log('api response', res);
+          this.showModal = false;
+          this.router.navigate(['/dashboard/archive']);
+        },
+        error: (err) => {
+          console.log('api response', err);
+        },
+      });
+    } else {
+      this.showModal = false;
+    }
     console.log(this.archive);
   }
 
@@ -53,7 +74,8 @@ export class InputcompComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private notesApi: NotesService,
-    private view: ViewTypeService
+    private view: ViewTypeService,
+    private router: Router
   ) {
     this.myForm = fb.group({
       title: ['', [Validators.required, Validators.minLength(2)]],

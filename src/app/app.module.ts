@@ -31,6 +31,7 @@ import { EditLabelsComponent } from './pages/edit-labels/edit-labels.component';
 import { ArchiveComponent } from './pages/archive/archive.component';
 import { BinComponent } from './pages/bin/bin.component';
 import { NotesComponent } from './pages/notes/notes.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { NotesComponent } from './pages/notes/notes.component';
     MatBadgeModule,
     HttpClientModule,
     NgxSpinnerModule,
+    MatMenuModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],

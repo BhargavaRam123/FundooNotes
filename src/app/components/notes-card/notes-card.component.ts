@@ -11,10 +11,11 @@ export class NotesCardComponent {
   @Input() description: any;
   @Input() viewType: any;
   @Input() color: any;
+  @Input() isArchived: any;
   myForm: FormGroup;
   archive = false;
   glowIcons = 0;
-  selectedColor = '#ffffff'; // Default white background
+  selectedColor = '#ffffff';
   showPalletModal = false;
   noteColors = [
     { name: 'Default', value: '#ffffff' },
