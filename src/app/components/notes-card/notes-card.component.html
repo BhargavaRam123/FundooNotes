@@ -15,12 +15,15 @@
       fontIcon="keep"
       class="pin material-symbols-outlined"
       [style.opacity]="glowIcons"
+      *ngIf="!isDeleted"
     ></mat-icon>
   </div>
   <div class="scont2">
     {{ description }}
   </div>
-  <div class="hovericons">
+
+  <!-- Show these icons only when note is NOT deleted -->
+  <div class="hovericons" *ngIf="!isDeleted">
     <div class="palletecontainer glow" [style.opacity]="glowIcons">
       <button mat-icon-button (click)="togglePalletModal()">
         <mat-icon
@@ -86,7 +89,6 @@
         [class.seltoggle]="archive"
       ></mat-icon>
     </button>
-    <!-- <button mat-icon-button [style.opacity]="glowIcons" class="glow"> -->
     <button
       mat-button
       [matMenuTriggerFor]="menu"
@@ -101,7 +103,7 @@
       ></mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>Delete note</button>
+      <button mat-menu-item (click)="deleteNotes()">Delete note</button>
       <button mat-menu-item>Add label</button>
       <button mat-menu-item>Add drawing</button>
       <button mat-menu-item>Make a copy</button>
@@ -109,6 +111,37 @@
       <button mat-menu-item>Copy to Google Docs</button>
       <button mat-menu-item>Version history</button>
     </mat-menu>
-    <!-- </button> -->
+  </div>
+
+  <!-- Show these icons only when note IS deleted -->
+  <div class="hovericonsdel" *ngIf="isDeleted">
+    <button
+      mat-icon-button
+      (click)="permanentDelete()"
+      [style.opacity]="glowIcons"
+      class="glow"
+      title="Delete forever"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Delete forever"
+        fontIcon="delete_forever"
+        class="material-symbols-outlined"
+      ></mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      (click)="restoreNote()"
+      [style.opacity]="glowIcons"
+      class="glow"
+      title="Restore"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Restore from trash"
+        fontIcon="restore_from_trash"
+        class="material-symbols-outlined"
+      ></mat-icon>
+    </button>
   </div>
 </div>

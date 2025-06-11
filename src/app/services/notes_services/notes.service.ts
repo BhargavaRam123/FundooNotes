@@ -33,4 +33,40 @@ export class NotesService {
     });
     return this.httpService.postApi(endPoint, data, header);
   }
+  changeNoteColor(data: any) {
+    const token = localStorage.getItem('token');
+    let endPoint: string = 'notes/changesColorNotes?access_token=' + token;
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+    return this.httpService.postApi(endPoint, data, header);
+  }
+  deleteNotes(data: any) {
+    const token = localStorage.getItem('token');
+    let endPoint: string = 'notes/trashNotes?access_token=' + token;
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+    return this.httpService.postApi(endPoint, data, header);
+  }
+  deleteForeverNotes(data: any) {
+    const token = localStorage.getItem('token');
+    let endPoint: string = 'notes/deleteForeverNotes?access_token=' + token;
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+    return this.httpService.postApi(endPoint, data, header);
+  }
+  getDeletedNotes() {
+    const token = localStorage.getItem('token');
+    let endPoint: string = 'notes/getTrashNotesList?access_token=' + token;
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+    return this.httpService.getApi(endPoint, header);
+  }
 }

@@ -14,6 +14,7 @@ export class NotesCardComponent {
   @Input() color: any;
   @Input() isArchived: any;
   @Input() _id: any;
+  @Input() isDeleted: any;
   myForm: FormGroup;
   archive = false;
   glowIcons = 0;
@@ -62,8 +63,62 @@ export class NotesCardComponent {
   selectColor(value: string) {
     this.selectedColor = value;
     this.myForm.get('color')?.setValue(value);
+    const data = {
+      noteIdList: [this._id],
+      color: this.selectedColor,
+    };
+    this.notesApi.changeNoteColor(data).subscribe({
+      next: (val) => {
+        console.log('changenotecolor response value', val);
+      },
+      error: (err) => {
+        console.log('error occured :', err);
+      },
+    });
+  }
+  deleteNotes() {
+    const data = {
+      noteIdList: [this._id],
+      isDeleted: !this.isDeleted,
+    };
+    this.notesApi.deleteNotes(data).subscribe({
+      next: (val) => {
+        console.log('deletenotes response value', val);
+      },
+      error: (err) => {
+        console.log('error occured :', err);
+      },
+    });
   }
 
+  permanentDelete() {
+    const data = {
+      noteIdList: [this._id],
+    };
+    this.notesApi.deleteForeverNotes(data).subscribe({
+      next: (val) => {
+        console.log('permanent delete response value', val);
+      },
+      error: (err) => {
+        console.log('error occurred:', err);
+      },
+    });
+  }
+
+  restoreNote() {
+    const data = {
+      noteIdList: [this._id],
+      isDeleted: false,
+    };
+    this.notesApi.deleteNotes(data).subscribe({
+      next: (val) => {
+        console.log('restore note response value', val);
+      },
+      error: (err) => {
+        console.log('error occurred:', err);
+      },
+    });
+  }
   onMouseLeave() {
     this.glowIcons = 0;
   }

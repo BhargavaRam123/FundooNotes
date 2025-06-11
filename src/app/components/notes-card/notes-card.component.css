@@ -67,6 +67,11 @@
   align-items: center;
   justify-content: space-between;
 }
+.hovericonsdel {
+  display: flex;
+  height: 30%;
+  align-items: center;
+}
 
 .scont1 {
   display: flex;
