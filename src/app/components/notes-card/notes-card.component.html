@@ -1,0 +1,114 @@
+<div
+  class="card"
+  [class.lcard]="viewType === 'list'"
+  [style.background-color]="color"
+  (mouseenter)="onMouseEnter()"
+  (mouseleave)="onMouseLeave()"
+>
+  <div class="scont1">
+    <div>
+      {{ title }}
+    </div>
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Example home icon"
+      fontIcon="keep"
+      class="pin material-symbols-outlined"
+      [style.opacity]="glowIcons"
+    ></mat-icon>
+  </div>
+  <div class="scont2">
+    {{ description }}
+  </div>
+  <div class="hovericons">
+    <div class="palletecontainer glow" [style.opacity]="glowIcons">
+      <button mat-icon-button (click)="togglePalletModal()">
+        <mat-icon
+          class="material-symbols-outlined"
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="palette"
+        ></mat-icon>
+      </button>
+      <div class="palletemodal" *ngIf="showPalletModal">
+        <div
+          *ngFor="let color of noteColors"
+          class="color-circle"
+          [style.background-color]="color.value"
+          [style.border-color]="color.value"
+          [class.selected]="selectedColor === color.value"
+          (click)="selectColor(color.value)"
+        >
+          <div class="check" *ngIf="selectedColor === color.value">
+            <mat-icon class="check-icon material-symbols-outlined"
+              >check</mat-icon
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="notifications_active"
+        class="material-symbols-outlined"
+      ></mat-icon>
+    </button>
+    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="person_add"
+        class="material-symbols-outlined"
+      ></mat-icon>
+    </button>
+    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="image"
+        class="material-symbols-outlined"
+      ></mat-icon>
+    </button>
+    <button
+      mat-icon-button
+      (click)="selectArchive()"
+      [style.opacity]="glowIcons"
+      class="glow material-symbols-outlined"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        [fontIcon]="isArchived ? 'unarchive' : 'archive'"
+        class="material-symbols-outlined"
+        [class.seltoggle]="archive"
+      ></mat-icon>
+    </button>
+    <!-- <button mat-icon-button [style.opacity]="glowIcons" class="glow"> -->
+    <button
+      mat-button
+      [matMenuTriggerFor]="menu"
+      [style.opacity]="glowIcons"
+      class="glow"
+    >
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="more_vert"
+        class="material-symbols-outlined"
+      ></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Delete note</button>
+      <button mat-menu-item>Add label</button>
+      <button mat-menu-item>Add drawing</button>
+      <button mat-menu-item>Make a copy</button>
+      <button mat-menu-item>Show tick boxes</button>
+      <button mat-menu-item>Copy to Google Docs</button>
+      <button mat-menu-item>Version history</button>
+    </mat-menu>
+    <!-- </button> -->
+  </div>
+</div>

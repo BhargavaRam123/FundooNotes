@@ -1,0 +1,155 @@
+<div class="container">
+  <div
+    class="bcontainer"
+    [formGroup]="myForm"
+    [style.background-color]="selectedColor"
+    [class.addHeight]="showModal"
+  >
+    <div class="searchcontainer" *ngIf="!showModal">
+      <input
+        type="text"
+        class="inpcontainer"
+        placeholder="Take a note..."
+        (focus)="toggleModal()"
+      />
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="check_box"
+        class="boxclass material-symbols-outlined"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="brush"
+        class="brushclass material-symbols-outlined"
+      ></mat-icon>
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="image"
+        class="imageclass material-symbols-outlined"
+      ></mat-icon>
+    </div>
+    <div class="searchcontainer" *ngIf="showModal">
+      <input
+        type="text"
+        class="inpcontainer remborder"
+        formControlName="title"
+        placeholder="Title"
+        [style.background-color]="selectedColor"
+      />
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Example home icon"
+        fontIcon="keep"
+        class="pin material-symbols-outlined"
+        [class.seltoggle]="pined"
+        (click)="selectPin()"
+      ></mat-icon>
+    </div>
+    <div class="searchcontainer" *ngIf="showModal">
+      <input
+        type="text"
+        class="inpcontainer remborder"
+        placeholder="Take a note"
+        formControlName="description"
+        [style.background-color]="selectedColor"
+      />
+    </div>
+    <div *ngIf="showModal" class="lastcontainer">
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="format_letter_spacing_wide"
+          class="material-symbols-outlined"
+        ></mat-icon>
+      </button>
+      <div class="palletecontainer">
+        <button mat-icon-button (click)="togglePalletModal()">
+          <mat-icon
+            aria-hidden="false"
+            aria-label="Example home icon"
+            fontIcon="palette"
+            class="material-symbols-outlined"
+          ></mat-icon>
+        </button>
+        <div class="palletemodal" *ngIf="showPalletModal">
+          <div
+            *ngFor="let color of noteColors"
+            class="color-circle"
+            [style.background-color]="color.value"
+            [style.border-color]="color.value"
+            [class.selected]="selectedColor === color.value"
+            (click)="selectColor(color.value)"
+          >
+            <div class="check" *ngIf="selectedColor === color.value">
+              <mat-icon class="check-icon">check</mat-icon>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="notifications_active"
+          class="material-symbols-outlined"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="person_add"
+          class="material-symbols-outlined"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="image"
+          class="material-symbols-outlined"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button (click)="selectArchive()">
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="archive"
+          [class.seltoggle]="archive"
+          class="material-symbols-outlined"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="more_vert"
+          class="material-symbols-outlined"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="undo"
+          class="material-symbols-outlined"
+        ></mat-icon>
+      </button>
+      <button mat-icon-button>
+        <mat-icon
+          class="material-symbols-outlined"
+          aria-hidden="false"
+          aria-label="Example home icon"
+          fontIcon="redo"
+          class="material-symbols-outlined"
+        ></mat-icon>
+      </button>
+      <div (click)="onSubmit()" class="closecontainer">close</div>
+    </div>
+  </div>
+</div>

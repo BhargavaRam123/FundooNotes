@@ -1,0 +1,128 @@
+.card {
+  width: 250px;
+  height: 150px;
+  box-shadow: 0px 0px 5px rgb(128, 128, 128, 0.2);
+  border-radius: 5px;
+}
+.lcard {
+  width: 500px;
+}
+.palletecontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.palletemodal {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  gap: 5px;
+}
+.color-circle {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.check {
+  position: absolute;
+  bottom: 100%;
+  transform: translateY(50%);
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(161, 66, 244);
+}
+
+.check-icon {
+  scale: 0.6;
+  color: white;
+}
+.selected {
+  border: 2px solid rgb(161, 66, 244) !important;
+}
+.seltoggle {
+  color: black;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24;
+}
+
+.hovericons {
+  display: flex;
+  height: 30%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.scont1 {
+  display: flex;
+  height: 30%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0px 5px 0px 10px;
+}
+.scont2 {
+  height: 40%;
+  padding: 0px 5px 0px 10px;
+}
+.pin,
+.glow {
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: #666666;
+  font-size: 24px;
+}
+
+@media only screen and (max-width: 850px) {
+  .card {
+    width: 250px;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .card {
+    width: 500px;
+  }
+}
+@media only screen and (max-width: 650px) {
+  .card {
+    width: 400px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .card {
+    width: 300px;
+  }
+}
+.hovericons button {
+  min-width: 32px !important;
+  width: 32px !important;
+  height: 32px !important;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: #666666;
+  font-size: 20px;
+}

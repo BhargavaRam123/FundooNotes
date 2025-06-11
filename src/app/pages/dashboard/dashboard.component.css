@@ -1,0 +1,73 @@
+.example-spacer {
+  flex: 1 1 auto;
+}
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid rgb(128, 128, 128, 0.2);
+}
+.inpcontainer {
+  padding: 15px 10px 15px 50px;
+  border-radius: 5px;
+  border: none;
+  background-color: rgb(128, 128, 128, 0.2);
+  font-size: 1.1rem;
+  width: 100%;
+}
+input:focus {
+  outline: none;
+  background-color: white;
+  box-shadow: 2px 2px 5px 5px rgb(128, 128, 128, 0.2);
+}
+.searchcontainer {
+  position: relative;
+  width: 40%;
+}
+.search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.menuicon {
+  font-size: 28px;
+  font-weight: lighter;
+  color: #5f6368;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: #666666;
+  font-size: 24px;
+}
+
+.hover {
+  color: #000000 !important;
+  font-size: 24px;
+}
+
+.weightIncrease {
+  font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
+}
+.avatar {
+  width: 30px;
+}
+.avatarcontainer {
+  width: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  border-radius: 50%;
+  border: 1px solid #666666;
+  overflow: hidden;
+}
+@media only screen and (max-width: 800px) {
+  .searchcontainer {
+    display: none;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .dis {
+    display: none;
+  }
+}

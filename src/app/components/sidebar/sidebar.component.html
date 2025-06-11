@@ -1,0 +1,122 @@
+<div class="parent">
+  <div
+    class="scontainer"
+    (mouseenter)="evententer()"
+    (mouseleave)="eventleave()"
+  >
+    <div
+      class="select"
+      (click)="selectItem('notes')"
+      [class.case1]="selectedItem === 'notes' && showFiller"
+      [class.case2]="selectedItem === 'notes' && !showFiller"
+    >
+      <mat-icon class="material-symbols-outlined">lightbulb</mat-icon>
+    </div>
+    <div
+      class="select"
+      (click)="selectItem('Reminders')"
+      [class.case1]="selectedItem === 'Reminders' && showFiller"
+      [class.case2]="selectedItem === 'Reminders' && !showFiller"
+    >
+      <mat-icon class="material-symbols-outlined">notifications</mat-icon>
+    </div>
+    <div
+      class="select"
+      (click)="selectItem('Labels')"
+      [class.case1]="selectedItem === 'Labels' && showFiller"
+      [class.case2]="selectedItem === 'Labels' && !showFiller"
+    >
+      <mat-icon class="material-symbols-outlined">label</mat-icon>
+    </div>
+    <div
+      class="select"
+      (click)="selectItem('editLabels')"
+      [class.case1]="selectedItem === 'editLabels' && showFiller"
+      [class.case2]="selectedItem === 'editLabels' && !showFiller"
+    >
+      <mat-icon class="material-symbols-outlined">edit</mat-icon>
+    </div>
+
+    <div
+      class="select"
+      (click)="selectItem('Archive')"
+      [class.case1]="selectedItem === 'Archive' && showFiller"
+      [class.case2]="selectedItem === 'Archive' && !showFiller"
+    >
+      <mat-icon class="material-symbols-outlined">archive</mat-icon>
+    </div>
+    <div
+      class="select"
+      (click)="selectItem('Bin')"
+      [class.case1]="selectedItem === 'Bin' && showFiller"
+      [class.case2]="selectedItem === 'Bin' && !showFiller"
+    >
+      <mat-icon class="material-symbols-outlined">delete</mat-icon>
+    </div>
+  </div>
+  <mat-sidenav-container class="example-container">
+    <mat-sidenav
+      mode="side"
+      class="setwidth"
+      [opened]="showFiller"
+      #drawer
+      (mouseenter)="evententer()"
+      (mouseleave)="eventleave()"
+    >
+      <div class="togglescontainer">
+        <div
+          class="tselect"
+          (click)="selectItem('notes')"
+          [class.tcase1]="selectedItem === 'notes' && showFiller"
+          [class.tcase2]="selectedItem === 'notes' && !showFiller"
+        >
+          Notes
+        </div>
+        <div
+          class="tselect"
+          (click)="selectItem('Reminders')"
+          [class.tcase1]="selectedItem === 'Reminders' && showFiller"
+          [class.tcase2]="selectedItem === 'Reminders' && !showFiller"
+        >
+          Reminders
+        </div>
+        <div
+          class="tselect"
+          (click)="selectItem('Labels')"
+          [class.tcase1]="selectedItem === 'Labels' && showFiller"
+          [class.tcase2]="selectedItem === 'Labels' && !showFiller"
+        >
+          Labels
+        </div>
+        <div
+          class="tselect"
+          (click)="selectItem('editLabels')"
+          [class.tcase1]="selectedItem === 'editLabels' && showFiller"
+          [class.tcase2]="selectedItem === 'editLabels' && !showFiller"
+        >
+          Edit Labels
+        </div>
+
+        <div
+          class="tselect"
+          (click)="selectItem('Archive')"
+          [class.tcase1]="selectedItem === 'Archive' && showFiller"
+          [class.tcase2]="selectedItem === 'Archive' && !showFiller"
+        >
+          Archive
+        </div>
+        <div
+          class="tselect"
+          (click)="selectItem('Bin')"
+          [class.tcase1]="selectedItem === 'Bin' && showFiller"
+          [class.tcase2]="selectedItem === 'Bin' && !showFiller"
+        >
+          Bin
+        </div>
+      </div>
+    </mat-sidenav>
+    <mat-sidenav-content class="maincontainer">
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

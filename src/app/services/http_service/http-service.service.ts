@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class HttpServiceService {
+export class HttpService {
   baseurl: string = 'https://fundoonotes.incubation.bridgelabz.com/api/';
   constructor(private http: HttpClient) {}
   getApi(endPoint: string, headers: HttpHeaders) {

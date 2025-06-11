@@ -1,0 +1,30 @@
+<div class="maincontainer" [class.maincontainerlist]="viewType === 'list'">
+  <div *ngIf="pinedNotes.length > 0" [class.mcontainer]="viewType === 'list'">
+    <div class="pinhighlight" [class.pinhighlighte]="viewType === 'list'">
+      PINNED
+    </div>
+    <div class="container" [class.list]="viewType === 'list'">
+      <app-notes-card
+        *ngFor="let note of pinedNotes"
+        [title]="note.title"
+        [description]="note.description"
+        [viewType]="viewType"
+        [color]="note.color"
+      ></app-notes-card>
+    </div>
+  </div>
+  <div *ngIf="pinedNotes.length > 0" [class.mcontainer]="viewType === 'list'">
+    <div class="pinhighlight" [class.pinhighlighte]="viewType === 'list'">
+      OTHERS
+    </div>
+    <div class="container" [class.list]="viewType === 'list'">
+      <app-notes-card
+        *ngFor="let note of nonPinedNotes"
+        [title]="note.title"
+        [description]="note.description"
+        [viewType]="viewType"
+        [color]="note.color"
+      ></app-notes-card>
+    </div>
+  </div>
+</div>

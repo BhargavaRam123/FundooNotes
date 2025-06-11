@@ -1,10 +1,19 @@
+<ngx-spinner
+  bdColor="rgba(0, 0, 0, 0.8)"
+  size="large"
+  color="#fff"
+  type="ball-climbing-dot"
+  [fullScreen]="true"
+  ><p style="color: white">Loading...</p></ngx-spinner
+>
+
 <div class="container">
   <mat-card class="example-card" appearance="outlined">
     <div class="imgcontainer">
       <img src="../../../assets/google icon.webp" alt="Photo of a Shiba Inu" />
     </div>
     <div class="headercontainer">
-      <h1>Login</h1>
+      <p style="font-size: 20px">Login</p>
       <div style="font-weight: 300; font-size: medium">
         Use your Google Account
       </div>
@@ -40,7 +49,7 @@
         <mat-form-field class="example-full-width" appearance="outline">
           <mat-label>Password</mat-label>
           <input
-            type="email"
+            type="password"
             matInput
             [formControl]="passwordFormControl"
             [errorStateMatcher]="matcher"
@@ -78,7 +87,12 @@
         Create account
       </div>
       <div>
-        <button mat-raised-button color="primary" (click)="onSubmit()">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="onSubmit()"
+          [disabled]="!emailFormControl.valid || !passwordFormControl.valid"
+        >
           Login
         </button>
       </div>

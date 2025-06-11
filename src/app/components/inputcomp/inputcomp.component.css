@@ -1,0 +1,163 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200");
+
+.container {
+  height: 30%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  /* background-color: red; */
+}
+.bcontainer {
+  width: 43%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 4px 16px 0px;
+}
+
+.addHeight {
+  height: 80%;
+}
+.inpcontainer {
+  padding: 15px 10px 15px 50px;
+  border-radius: 5px;
+  border: none;
+  background-color: white;
+  font-size: 1.1rem;
+  box-sizing: border-box;
+  width: 100%;
+  box-shadow: 0px 0px 5px rgb(128, 128, 128, 0.2);
+}
+input:focus {
+  outline: none;
+  background-color: white;
+  box-shadow: none;
+}
+
+.remborder {
+  box-shadow: 0px 0px 0px white;
+}
+
+.searchcontainer {
+  position: relative;
+  width: 100%;
+}
+.boxclass {
+  position: absolute;
+  right: 20%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.brushclass {
+  opacity: 0.3;
+  position: absolute;
+  right: 12%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.imageclass {
+  position: absolute;
+  right: 4%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.pin {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.lastcontainer {
+  width: 100%;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.palletecontainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.palletemodal {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 50%;
+  display: flex;
+  flex-direction: row;
+  background-color: white;
+  padding: 5px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  gap: 5px;
+}
+.color-circle {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  position: relative;
+  border-width: 2px;
+  border-style: solid;
+}
+
+.check {
+  position: absolute;
+  bottom: 100%;
+  transform: translateY(50%);
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(161, 66, 244);
+}
+.check-icon {
+  scale: 0.6;
+  color: white;
+}
+.selected {
+  border: 2px solid rgb(161, 66, 244) !important;
+}
+.seltoggle {
+  color: black;
+  font-variation-settings: "FILL" 1, "wght" 400, "GRAD" 0, "opsz" 24 !important;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: #666666;
+  font-size: 24px;
+}
+
+.closecontainer {
+  cursor: pointer;
+  color: #666666;
+}
+
+@media only screen and (max-width: 1050px) {
+  .bcontainer {
+    width: 60%;
+  }
+}
+
+@media only screen and (max-width: 950px) {
+  .bcontainer {
+    width: 70%;
+  }
+}
+@media only screen and (max-width: 850px) {
+  .bcontainer {
+    width: 80%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .bcontainer {
+    width: 90%;
+  }
+}

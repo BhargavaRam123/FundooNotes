@@ -1,0 +1,85 @@
+<mat-toolbar class="navbar">
+  <button
+    mat-icon-button
+    class="example-icon"
+    aria-label="Example icon-button with menu icon"
+    (click)="showFiller = !showFiller"
+  >
+    <mat-icon class="menuicon material-symbols-outlined">menu</mat-icon>
+  </button>
+  <img src="../../../assets/keepicon.png" alt="" />
+  <span style="color: #5f6368; font-family: sans-serif; font-size: 22px"
+    >Keep</span
+  >
+  <span class="example-spacer"></span>
+  <div class="searchcontainer">
+    <mat-icon class="search-icon menuicon material-symbols-outlined"
+      >search</mat-icon
+    >
+    <input type="text" class="inpcontainer" placeholder="Search" />
+  </div>
+  <span class="example-spacer"></span>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon material-symbols-outlined"
+    aria-label="Example icon-button with heart icon"
+    (mouseover)="refreshHoverChange(true)"
+    (mouseleave)="refreshHoverChange(false)"
+  >
+    <mat-icon
+      class="menuicon material-symbols-outlined"
+      [class.hover]="refreshHover"
+      >refresh</mat-icon
+    >
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon material-symbols-outlined"
+    aria-label="Example icon-button with heart icon"
+    (click)="toggleviewType()"
+    (mouseover)="viewHoverChange(true)"
+    (mouseleave)="viewHoverChange(false)"
+  >
+    <mat-icon
+      class="menuicon material-symbols-outlined weightIncrease dis"
+      [fontIcon]="viewType === 'grid' ? 'view_agenda' : 'grid_view'"
+      [class.hover]="viewHover"
+    ></mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    class="example-icon favorite-icon material-symbols-outlined"
+    aria-label="Example icon-button with heart icon"
+    (mouseover)="settingsHoverChange(true)"
+    (mouseleave)="settingsHoverChange(false)"
+  >
+    <mat-icon
+      class="menuicon material-symbols-outlined"
+      [class.hover]="settingsHover"
+      >settings</mat-icon
+    >
+  </button>
+
+  <button
+    mat-icon-button
+    class="example-icon material-icons-outlined"
+    aria-label="Example icon-button with share icon"
+  >
+    <mat-icon class="material-symbols-outlined">apps</mat-icon>
+  </button>
+
+  <div class="avatarcontainer">
+    <img
+      src="https://api.dicebear.com/9.x/notionists-neutral/svg"
+      alt=""
+      class="avatar"
+    />
+  </div>
+</mat-toolbar>
+<app-sidebar
+  [showFiller]="showFiller"
+  [viewType]="viewType"
+  (itemSelected)="onItemSelected($event)"
+  (fillerStateChanged)="onFillerStateChanged($event)"
+  >></app-sidebar
+>

@@ -4,23 +4,24 @@ import { HttpHeaders } from '@angular/common/http';
 @Injectable({
   providedIn: 'root',
 })
-export class UserService {
+export class NotesService {
   constructor(private httpService: HttpService) {}
-  signUp(data: any) {
-    let endPoint: string = 'user/userSignUp';
+  postNotes(data: any) {
+    const token = localStorage.getItem('token');
+    let endPoint: string = 'notes/addNotes?access_token=' + token;
     let header = new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: 'application/json',
     });
     return this.httpService.postApi(endPoint, data, header);
   }
-  logIn(data: any) {
-    let endPoint: string = 'user/login';
+  getUserNotes() {
+    const token = localStorage.getItem('token');
+    let endPoint: string = 'notes/getNotesList?access_token=' + token;
     let header = new HttpHeaders({
       'Content-Type': 'application/json',
       Accept: 'application/json',
     });
-
-    return this.httpService.postApi(endPoint, data, header);
+    return this.httpService.getApi(endPoint, header);
   }
 }
