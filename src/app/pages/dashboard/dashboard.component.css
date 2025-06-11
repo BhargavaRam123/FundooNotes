@@ -48,3 +48,14 @@ input:focus {
 .weightIncrease {
   font-variation-settings: "FILL" 0, "wght" 500, "GRAD" 0, "opsz" 24;
 }
+
+@media only screen and (max-width: 800px) {
+  .searchcontainer {
+    display: none;
+  }
+}
+@media only screen and (max-width: 750px) {
+  .dis {
+    display: none;
+  }
+}
