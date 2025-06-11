@@ -25,6 +25,12 @@ import { HttpClientModule } from '@angular/common/http';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { CardcontainerComponent } from './components/cardcontainer/cardcontainer.component';
 import { NotesCardComponent } from './components/notes-card/notes-card.component';
+import { RemindersComponent } from './pages/reminders/reminders.component';
+import { LabelsComponent } from './pages/labels/labels.component';
+import { EditLabelsComponent } from './pages/edit-labels/edit-labels.component';
+import { ArchiveComponent } from './pages/archive/archive.component';
+import { BinComponent } from './pages/bin/bin.component';
+import { NotesComponent } from './pages/notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +42,12 @@ import { NotesCardComponent } from './components/notes-card/notes-card.component
     InputcompComponent,
     CardcontainerComponent,
     NotesCardComponent,
+    RemindersComponent,
+    LabelsComponent,
+    EditLabelsComponent,
+    ArchiveComponent,
+    BinComponent,
+    NotesComponent,
   ],
   imports: [
     BrowserModule,

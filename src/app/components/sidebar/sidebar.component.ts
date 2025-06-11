@@ -13,41 +13,35 @@ export class SidebarComponent {
   @Output() fillerStateChanged = new EventEmitter<boolean>();
 
   selectedItem: string = 'notes';
+
   constructor(private router: Router) {}
+
   selectItem(s: string) {
     this.selectedItem = s;
-    // switch (this.selectedItem) {
-    //   case 'notes':
-    //     this.router.navigate(['/notes']);
-    //     break;
-    //   case 'Reminders':
-    //     this.router.navigate(['/reminders']);
-    //     break;
-    //   case 'Labels':
-    //     this.router.navigate(['/labels']);
-    //     break;
-    //   case 'editLabels':
-    //     this.router.navigate(['/edit-labels']);
-    //     break;
-    //   case 'Archive':
-    //     this.router.navigate(['/archive']);
-    //     break;
-    //   case 'Bin':
-    //     this.router.navigate(['/bin']);
-    //     break;
-    //   default:
-    //     this.router.navigate(['/notes']);
-    // }
     this.itemSelected.emit(s);
+
+    // Add navigation logic here
+    const routeMap: { [key: string]: string } = {
+      notes: 'notes',
+      Reminders: 'reminders',
+      Labels: 'labels',
+      editLabels: 'edit-labels',
+      Archive: 'archive',
+      Bin: 'bin',
+    };
+
+    const route = routeMap[s] || s.toLowerCase();
+    console.log('navigating to route', route);
+    this.router.navigate([`dashboard/${route}`]);
   }
 
   evententer() {
     this.showFiller = true;
-    this.fillerStateChanged.emit(true); // Emit to parent
+    this.fillerStateChanged.emit(true);
   }
 
   eventleave() {
     this.showFiller = false;
-    this.fillerStateChanged.emit(false); // Emit to parent
+    this.fillerStateChanged.emit(false);
   }
 }
