@@ -69,4 +69,13 @@ export class NotesService {
     });
     return this.httpService.getApi(endPoint, header);
   }
+  getArchiveNotesList() {
+    const token = localStorage.getItem('token');
+    let endPoint: string = 'notes/getArchiveNotesList?access_token=' + token;
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+    return this.httpService.getApi(endPoint, header);
+  }
 }
