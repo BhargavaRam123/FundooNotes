@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { NotesService } from 'src/app/services/notes_services/notes.service';
 
 @Component({
   selector: 'app-notes-card',
@@ -12,6 +13,7 @@ export class NotesCardComponent {
   @Input() viewType: any;
   @Input() color: any;
   @Input() isArchived: any;
+  @Input() _id: any;
   myForm: FormGroup;
   archive = false;
   glowIcons = 0;
@@ -32,7 +34,7 @@ export class NotesCardComponent {
     { name: 'Gray', value: '#e8eaed' },
   ];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private notesApi: NotesService) {
     this.myForm = fb.group({
       color: [''],
     });
@@ -41,6 +43,18 @@ export class NotesCardComponent {
   selectArchive() {
     this.archive = !this.archive;
     console.log(this.archive);
+    const data = {
+      noteIdList: [this._id],
+      isArchived: !this.isArchived,
+    };
+    this.notesApi.archiveNotes(data).subscribe({
+      next: (val) => {
+        console.log('archive and unarchive response value', val);
+      },
+      error: (err) => {
+        console.log('error occured :', err);
+      },
+    });
   }
   togglePalletModal() {
     this.showPalletModal = !this.showPalletModal;

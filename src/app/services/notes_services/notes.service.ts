@@ -24,4 +24,13 @@ export class NotesService {
     });
     return this.httpService.getApi(endPoint, header);
   }
+  archiveNotes(data: any) {
+    const token = localStorage.getItem('token');
+    let endPoint: string = 'notes/archiveNotes?access_token=' + token;
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+    });
+    return this.httpService.postApi(endPoint, data, header);
+  }
 }
