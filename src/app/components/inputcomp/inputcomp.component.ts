@@ -99,6 +99,7 @@ export class InputcompComponent implements OnInit {
         next: (res) => {
           console.log('api response', res);
           this.showModal = false;
+          this.notesApi.triggerNotesRefresh();
         },
         error: (err) => {
           console.log('api response', err);

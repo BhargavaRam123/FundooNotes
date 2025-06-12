@@ -56,6 +56,7 @@ export class NotesCardComponent {
         console.log('error occured :', err);
       },
     });
+    this.notesApi.triggerNotesRefresh();
   }
   togglePalletModal() {
     this.showPalletModal = !this.showPalletModal;
@@ -75,6 +76,7 @@ export class NotesCardComponent {
         console.log('error occured :', err);
       },
     });
+    this.notesApi.triggerNotesRefresh();
   }
   deleteNotes() {
     const data = {

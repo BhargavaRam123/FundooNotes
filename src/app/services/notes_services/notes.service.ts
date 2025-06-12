@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from '../http_service/http-service.service';
 import { HttpHeaders } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class NotesService {
   constructor(private httpService: HttpService) {}
+  private notesUpdated = new BehaviorSubject<boolean>(false);
+  notesUpdated$ = this.notesUpdated.asObservable();
+  triggerNotesRefresh() {
+    this.notesUpdated.next(true);
+  }
   postNotes(data: any) {
     const token = localStorage.getItem('token');
     let endPoint: string = 'notes/addNotes?access_token=' + token;
