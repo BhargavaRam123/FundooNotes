@@ -7,10 +7,15 @@
   >
     <mat-icon class="menuicon material-symbols-outlined">menu</mat-icon>
   </button>
-  <img src="../../../assets/keepicon.png" alt="" />
-  <span style="color: #5f6368; font-family: sans-serif; font-size: 22px"
+  <img *ngIf="!getPageTitle()" src="../../../assets/keepicon.png" alt="" />
+  <span
+    *ngIf="!getPageTitle()"
+    style="color: #5f6368; font-family: sans-serif; font-size: 22px"
     >Keep</span
   >
+  <span style="color: #5f6368; font-family: sans-serif; font-size: 22px">{{
+    getPageTitle()
+  }}</span>
   <span class="example-spacer"></span>
   <div class="searchcontainer">
     <mat-icon class="search-icon menuicon material-symbols-outlined"

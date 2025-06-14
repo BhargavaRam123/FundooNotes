@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewTypeService } from 'src/app/services/neededInfo_Service/view-type.service';
 import { SearchService } from 'src/app/services/search_service/search.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -11,10 +11,11 @@ export class DashboardComponent {
   showFiller = false;
   viewType = 'grid';
   searchQuery = '';
-
+  pageValue: any;
   constructor(
     private viewService: ViewTypeService,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private router: Router
   ) {}
 
   viewHover = false;
@@ -64,5 +65,25 @@ export class DashboardComponent {
   // Handle filler state from sidebar
   onFillerStateChanged(state: boolean) {
     this.showFiller = state;
+  }
+
+  getPageTitle(): string {
+    const value = this.router.url.split('/');
+    switch (value[2]) {
+      case 'notes':
+        return '';
+      case 'reminders':
+        return 'Reminders';
+      case 'labels':
+        return 'Labels';
+      case 'edit-labels':
+        return 'Edit Labels';
+      case 'archive':
+        return 'Archive';
+      case 'bin':
+        return 'Bin';
+      default:
+        return '';
+    }
   }
 }
