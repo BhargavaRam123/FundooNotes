@@ -45,6 +45,39 @@
   gap: 50px;
 }
 
+/* No results styles */
+.no-results {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 300px;
+  width: 100%;
+}
+
+.no-results-content {
+  text-align: center;
+  color: #5f6368;
+}
+
+.no-results-icon {
+  font-size: 48px;
+  color: #dadce0;
+  margin-bottom: 16px;
+}
+
+.no-results-text {
+  font-size: 16px;
+  font-weight: 400;
+  margin: 0 0 8px 0;
+  color: #3c4043;
+}
+
+.no-results-subtext {
+  font-size: 14px;
+  margin: 0;
+  color: #5f6368;
+}
+
 @media only screen and (max-width: 750px) {
   .maincontainer {
     height: 100%;

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ViewTypeService } from 'src/app/services/neededInfo_Service/view-type.service';
+import { SearchService } from 'src/app/services/search_service/search.service';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -8,7 +10,13 @@ import { ViewTypeService } from 'src/app/services/neededInfo_Service/view-type.s
 export class DashboardComponent {
   showFiller = false;
   viewType = 'grid';
-  constructor(private viewService: ViewTypeService) {}
+  searchQuery = '';
+
+  constructor(
+    private viewService: ViewTypeService,
+    private searchService: SearchService
+  ) {}
+
   viewHover = false;
   refreshHover = false;
   settingsHover = false;
@@ -16,12 +24,15 @@ export class DashboardComponent {
   viewHoverChange(value: boolean) {
     this.viewHover = value;
   }
+
   refreshHoverChange(value: boolean) {
     this.refreshHover = value;
   }
+
   settingsHoverChange(value: boolean) {
     this.settingsHover = value;
   }
+
   toggleviewType() {
     console.log('clicked on the view', this.viewType);
     if (this.viewType === 'grid') {
@@ -32,6 +43,18 @@ export class DashboardComponent {
       this.viewService.setViewType('grid');
     }
   }
+
+  // Search functionality
+  onSearchChange(event: any) {
+    this.searchQuery = event.target.value;
+    this.searchService.setSearchQuery(this.searchQuery);
+  }
+
+  clearSearch() {
+    this.searchQuery = '';
+    this.searchService.setSearchQuery('');
+  }
+
   selectedItem: string = '';
   onItemSelected(item: string) {
     this.selectedItem = item;

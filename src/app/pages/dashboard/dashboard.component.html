@@ -16,7 +16,21 @@
     <mat-icon class="search-icon menuicon material-symbols-outlined"
       >search</mat-icon
     >
-    <input type="text" class="inpcontainer" placeholder="Search" />
+    <input
+      type="text"
+      class="inpcontainer"
+      placeholder="Search"
+      [(ngModel)]="searchQuery"
+      (input)="onSearchChange($event)"
+    />
+    <button
+      *ngIf="searchQuery"
+      mat-icon-button
+      class="clear-search-btn"
+      (click)="clearSearch()"
+    >
+      <mat-icon class="material-symbols-outlined">close</mat-icon>
+    </button>
   </div>
   <span class="example-spacer"></span>
   <button

@@ -1,6 +1,24 @@
-<div [class.container]="viewType === 'grid'" [class.list]="viewType === 'list'">
+<!-- Show "No results found" message when searching and no results -->
+<div
+  *ngIf="currentSearchQuery && filteredDeletedNotes.length === 0"
+  class="no-results"
+>
+  <div class="no-results-content">
+    <mat-icon class="no-results-icon">search_off</mat-icon>
+    <p class="no-results-text">
+      No deleted notes found for "{{ currentSearchQuery }}"
+    </p>
+    <p class="no-results-subtext">Try searching for something else</p>
+  </div>
+</div>
+
+<div
+  [class.container]="viewType === 'grid'"
+  [class.list]="viewType === 'list'"
+  *ngIf="filteredDeletedNotes.length > 0"
+>
   <app-notes-card
-    *ngFor="let note of deletedNotes"
+    *ngFor="let note of filteredDeletedNotes"
     [title]="note.title"
     [description]="note.description"
     [viewType]="viewType"

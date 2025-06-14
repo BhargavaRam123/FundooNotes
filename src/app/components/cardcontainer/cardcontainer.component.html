@@ -1,11 +1,33 @@
 <div class="maincontainer" [class.maincontainerlist]="viewType === 'list'">
-  <div *ngIf="pinedNotes.length > 0" [class.mcontainer]="viewType === 'list'">
+  <!-- Show "No results found" message when searching and no results -->
+  <div
+    *ngIf="
+      currentSearchQuery &&
+      filteredPinedNotes.length === 0 &&
+      filteredNonPinedNotes.length === 0
+    "
+    class="no-results"
+  >
+    <div class="no-results-content">
+      <mat-icon class="no-results-icon">search_off</mat-icon>
+      <p class="no-results-text">
+        No notes found for "{{ currentSearchQuery }}"
+      </p>
+      <p class="no-results-subtext">Try searching for something else</p>
+    </div>
+  </div>
+
+  <!-- Pinned Notes Section -->
+  <div
+    *ngIf="filteredPinedNotes.length > 0"
+    [class.mcontainer]="viewType === 'list'"
+  >
     <div class="pinhighlight" [class.pinhighlighte]="viewType === 'list'">
       PINNED
     </div>
     <div class="container" [class.list]="viewType === 'list'">
       <app-notes-card
-        *ngFor="let note of pinedNotes"
+        *ngFor="let note of filteredPinedNotes"
         [title]="note.title"
         [description]="note.description"
         [viewType]="viewType"
@@ -15,13 +37,22 @@
       ></app-notes-card>
     </div>
   </div>
-  <div *ngIf="pinedNotes.length > 0" [class.mcontainer]="viewType === 'list'">
-    <div class="pinhighlight" [class.pinhighlighte]="viewType === 'list'">
+
+  <!-- Other Notes Section -->
+  <div
+    *ngIf="filteredNonPinedNotes.length > 0"
+    [class.mcontainer]="viewType === 'list'"
+  >
+    <div
+      class="pinhighlight"
+      [class.pinhighlighte]="viewType === 'list'"
+      *ngIf="filteredPinedNotes.length > 0"
+    >
       OTHERS
     </div>
     <div class="container" [class.list]="viewType === 'list'">
       <app-notes-card
-        *ngFor="let note of nonPinedNotes"
+        *ngFor="let note of filteredNonPinedNotes"
         [title]="note.title"
         [description]="note.description"
         [viewType]="viewType"
