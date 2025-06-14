@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { NotesService } from 'src/app/services/notes_services/notes.service';
-
+import { EditNoteDialogComponent } from 'src/app/edit-note-dialog/edit-note-dialog.component';
 @Component({
   selector: 'app-notes-card',
   templateUrl: './notes-card.component.html',
@@ -35,13 +36,50 @@ export class NotesCardComponent {
     { name: 'Gray', value: '#e8eaed' },
   ];
 
-  constructor(private fb: FormBuilder, private notesApi: NotesService) {
+  constructor(
+    private fb: FormBuilder,
+    private notesApi: NotesService,
+    private dialog: MatDialog
+  ) {
     this.myForm = fb.group({
       color: [''],
     });
   }
 
-  selectArchive() {
+  // New method to open edit dialog
+  openEditDialog() {
+    // Only open dialog if the note is not deleted
+    if (!this.isDeleted) {
+      const dialogRef = this.dialog.open(EditNoteDialogComponent, {
+        width: '600px',
+        maxWidth: '90vw',
+        data: {
+          id: this._id,
+          title: this.title,
+          description: this.description,
+          color: this.color,
+          isArchived: this.isArchived,
+        },
+        disableClose: false,
+        autoFocus: false,
+      });
+
+      dialogRef.afterClosed().subscribe((result) => {
+        if (result && result.updated) {
+          console.log('Note was updated or deleted');
+          // The service will automatically trigger refresh via triggerNotesRefresh()
+        }
+      });
+    }
+  }
+
+  // Prevent event bubbling for action buttons
+  stopPropagation(event: Event) {
+    event.stopPropagation();
+  }
+
+  selectArchive(event: Event) {
+    event.stopPropagation(); // Prevent opening edit dialog
     this.archive = !this.archive;
     console.log(this.archive);
     const data = {
@@ -58,10 +96,14 @@ export class NotesCardComponent {
     });
     this.notesApi.triggerNotesRefresh();
   }
-  togglePalletModal() {
+
+  togglePalletModal(event: Event) {
+    event.stopPropagation(); // Prevent opening edit dialog
     this.showPalletModal = !this.showPalletModal;
   }
-  selectColor(value: string) {
+
+  selectColor(value: string, event: Event) {
+    event.stopPropagation(); // Prevent opening edit dialog
     this.selectedColor = value;
     this.myForm.get('color')?.setValue(value);
     const data = {
@@ -78,7 +120,9 @@ export class NotesCardComponent {
     });
     this.notesApi.triggerNotesRefresh();
   }
-  deleteNotes() {
+
+  deleteNotes(event: Event) {
+    event.stopPropagation(); // Prevent opening edit dialog
     const data = {
       noteIdList: [this._id],
       isDeleted: !this.isDeleted,
@@ -91,9 +135,11 @@ export class NotesCardComponent {
         console.log('error occured :', err);
       },
     });
+    this.notesApi.triggerNotesRefresh();
   }
 
-  permanentDelete() {
+  permanentDelete(event: Event) {
+    event.stopPropagation(); // Prevent opening edit dialog
     const data = {
       noteIdList: [this._id],
     };
@@ -105,9 +151,11 @@ export class NotesCardComponent {
         console.log('error occurred:', err);
       },
     });
+    this.notesApi.triggerNotesRefresh();
   }
 
-  restoreNote() {
+  restoreNote(event: Event) {
+    event.stopPropagation(); // Prevent opening edit dialog
     const data = {
       noteIdList: [this._id],
       isDeleted: false,
@@ -120,10 +168,13 @@ export class NotesCardComponent {
         console.log('error occurred:', err);
       },
     });
+    this.notesApi.triggerNotesRefresh();
   }
+
   onMouseLeave() {
     this.glowIcons = 0;
   }
+
   onMouseEnter() {
     this.glowIcons = 1;
   }

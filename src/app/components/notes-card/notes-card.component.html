@@ -4,6 +4,8 @@
   [style.background-color]="color"
   (mouseenter)="onMouseEnter()"
   (mouseleave)="onMouseLeave()"
+  (click)="openEditDialog()"
+  [style.cursor]="!isDeleted ? 'pointer' : 'default'"
 >
   <div class="scont1">
     <div>
@@ -25,7 +27,7 @@
   <!-- Show these icons only when note is NOT deleted -->
   <div class="hovericons" *ngIf="!isDeleted">
     <div class="palletecontainer glow" [style.opacity]="glowIcons">
-      <button mat-icon-button (click)="togglePalletModal()">
+      <button mat-icon-button (click)="togglePalletModal($event)">
         <mat-icon
           class="material-symbols-outlined"
           aria-hidden="false"
@@ -40,7 +42,7 @@
           [style.background-color]="color.value"
           [style.border-color]="color.value"
           [class.selected]="selectedColor === color.value"
-          (click)="selectColor(color.value)"
+          (click)="selectColor(color.value, $event)"
         >
           <div class="check" *ngIf="selectedColor === color.value">
             <mat-icon class="check-icon material-symbols-outlined"
@@ -51,7 +53,12 @@
       </div>
     </div>
 
-    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+    <button
+      mat-icon-button
+      [style.opacity]="glowIcons"
+      class="glow"
+      (click)="stopPropagation($event)"
+    >
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
@@ -59,7 +66,12 @@
         class="material-symbols-outlined"
       ></mat-icon>
     </button>
-    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+    <button
+      mat-icon-button
+      [style.opacity]="glowIcons"
+      class="glow"
+      (click)="stopPropagation($event)"
+    >
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
@@ -67,7 +79,12 @@
         class="material-symbols-outlined"
       ></mat-icon>
     </button>
-    <button mat-icon-button [style.opacity]="glowIcons" class="glow">
+    <button
+      mat-icon-button
+      [style.opacity]="glowIcons"
+      class="glow"
+      (click)="stopPropagation($event)"
+    >
       <mat-icon
         aria-hidden="false"
         aria-label="Example home icon"
@@ -77,7 +94,7 @@
     </button>
     <button
       mat-icon-button
-      (click)="selectArchive()"
+      (click)="selectArchive($event)"
       [style.opacity]="glowIcons"
       class="glow material-symbols-outlined"
     >
@@ -94,6 +111,7 @@
       [matMenuTriggerFor]="menu"
       [style.opacity]="glowIcons"
       class="glow"
+      (click)="stopPropagation($event)"
     >
       <mat-icon
         aria-hidden="false"
@@ -103,7 +121,7 @@
       ></mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item (click)="deleteNotes()">Delete note</button>
+      <button mat-menu-item (click)="deleteNotes($event)">Delete note</button>
       <button mat-menu-item>Add label</button>
       <button mat-menu-item>Add drawing</button>
       <button mat-menu-item>Make a copy</button>
@@ -117,7 +135,7 @@
   <div class="hovericonsdel" *ngIf="isDeleted">
     <button
       mat-icon-button
-      (click)="permanentDelete()"
+      (click)="permanentDelete($event)"
       [style.opacity]="glowIcons"
       class="glow"
       title="Delete forever"
@@ -131,7 +149,7 @@
     </button>
     <button
       mat-icon-button
-      (click)="restoreNote()"
+      (click)="restoreNote($event)"
       [style.opacity]="glowIcons"
       class="glow"
       title="Restore"

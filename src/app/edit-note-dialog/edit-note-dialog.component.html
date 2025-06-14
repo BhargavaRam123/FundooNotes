@@ -1,0 +1,113 @@
+<div class="edit-dialog-container" [style.background-color]="selectedColor">
+  <mat-dialog-content class="dialog-content">
+    <form [formGroup]="editForm" class="edit-form">
+      <!-- Title Input -->
+      <div class="input-container">
+        <input
+          type="text"
+          class="title-input"
+          placeholder="Title"
+          formControlName="title"
+          [style.background-color]="selectedColor"
+        />
+        <button
+          type="button"
+          mat-icon-button
+          class="pin-button"
+          title="Pin note"
+        >
+          <mat-icon class="material-symbols-outlined">keep</mat-icon>
+        </button>
+      </div>
+
+      <!-- Description Input -->
+      <div class="input-container">
+        <textarea
+          class="description-input"
+          placeholder="Take a note..."
+          formControlName="description"
+          [style.background-color]="selectedColor"
+          rows="5"
+        ></textarea>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="action-buttons">
+        <button type="button" mat-icon-button title="Reminder">
+          <mat-icon class="material-symbols-outlined"
+            >notifications_active</mat-icon
+          >
+        </button>
+
+        <button type="button" mat-icon-button title="Collaborator">
+          <mat-icon class="material-symbols-outlined">person_add</mat-icon>
+        </button>
+
+        <div class="color-picker-container">
+          <button
+            type="button"
+            mat-icon-button
+            (click)="togglePalletModal()"
+            title="Background options"
+          >
+            <mat-icon class="material-symbols-outlined">palette</mat-icon>
+          </button>
+
+          <div class="color-palette" *ngIf="showPalletModal">
+            <div
+              *ngFor="let color of noteColors"
+              class="color-circle"
+              [style.background-color]="color.value"
+              [style.border-color]="color.value"
+              [class.selected]="selectedColor === color.value"
+              (click)="selectColor(color.value)"
+              [title]="color.name"
+            >
+              <div class="check" *ngIf="selectedColor === color.value">
+                <mat-icon class="check-icon">check</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button type="button" mat-icon-button title="Add image">
+          <mat-icon class="material-symbols-outlined">image</mat-icon>
+        </button>
+
+        <button type="button" mat-icon-button title="Archive">
+          <mat-icon class="material-symbols-outlined">archive</mat-icon>
+        </button>
+
+        <button
+          type="button"
+          mat-icon-button
+          (click)="onDelete()"
+          title="Delete"
+        >
+          <mat-icon class="material-symbols-outlined">delete</mat-icon>
+        </button>
+
+        <button type="button" mat-icon-button title="More">
+          <mat-icon class="material-symbols-outlined">more_vert</mat-icon>
+        </button>
+
+        <button type="button" mat-icon-button title="Undo">
+          <mat-icon class="material-symbols-outlined">undo</mat-icon>
+        </button>
+
+        <button type="button" mat-icon-button title="Redo">
+          <mat-icon class="material-symbols-outlined">redo</mat-icon>
+        </button>
+
+        <button
+          type="button"
+          mat-button
+          (click)="onClose()"
+          class="close-button"
+        >
+          Close
+        </button>
+      </div>
+    </form>
+  </mat-dialog-content>
+</div>

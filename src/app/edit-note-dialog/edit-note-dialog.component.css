@@ -1,0 +1,161 @@
+.edit-dialog-container {
+  width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.dialog-content {
+  padding: 0 !important;
+}
+
+.edit-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.input-container {
+  position: relative;
+  width: 90%;
+}
+
+.title-input {
+  width: 90%;
+  padding: 16px 50px 16px 16px;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  font-weight: 500;
+  outline: none;
+  resize: none;
+  box-sizing: border-box;
+}
+
+.description-input {
+  width: 90%;
+  padding: 12px 16px;
+  border: none;
+  background: transparent;
+  font-size: 14px;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+  box-sizing: border-box;
+  resize: none;
+}
+
+.pin-button {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+  width: 32px !important;
+  height: 32px !important;
+  min-width: 32px !important;
+}
+
+.action-buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px 16px 16px;
+  gap: 4px;
+  width: 90%;
+  justify-content: space-between;
+}
+
+.color-picker-container {
+  position: relative;
+}
+
+.color-palette {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  background: white;
+  padding: 8px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.color-circle {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #dadce0;
+  cursor: pointer;
+  position: relative;
+  transition: transform 0.2s ease;
+}
+
+.color-circle:hover {
+  transform: scale(1.1);
+}
+
+.color-circle.selected {
+  border-color: #1a73e8 !important;
+}
+
+.check {
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  width: 16px;
+  height: 16px;
+  background: #1a73e8;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.check-icon {
+  font-size: 12px;
+  color: white;
+}
+
+.spacer {
+  flex: 1;
+}
+
+.close-button {
+  min-width: 64px !important;
+  height: 36px !important;
+  border-radius: 4px !important;
+  text-transform: none !important;
+  font-size: 14px !important;
+  color: #5f6368 !important;
+  margin-left: auto;
+}
+
+.close-button:hover {
+  background-color: rgba(95, 99, 104, 0.1) !important;
+}
+
+.material-symbols-outlined {
+  font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+  color: #5f6368;
+  font-size: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .edit-dialog-container {
+    min-width: 320px;
+    max-width: 95vw;
+  }
+
+  .action-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .close-button {
+    align-self: center;
+  }
+}

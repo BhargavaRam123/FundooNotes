@@ -32,6 +32,8 @@ import { ArchiveComponent } from './pages/archive/archive.component';
 import { BinComponent } from './pages/bin/bin.component';
 import { NotesComponent } from './pages/notes/notes.component';
 import { MatMenuModule } from '@angular/material/menu';
+import { EditNoteDialogComponent } from './edit-note-dialog/edit-note-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -49,6 +51,7 @@ import { MatMenuModule } from '@angular/material/menu';
     ArchiveComponent,
     BinComponent,
     NotesComponent,
+    EditNoteDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -70,6 +73,7 @@ import { MatMenuModule } from '@angular/material/menu';
     HttpClientModule,
     NgxSpinnerModule,
     MatMenuModule,
+    MatDialogModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   providers: [],
