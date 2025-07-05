@@ -14,7 +14,7 @@ export class SidebarComponent {
 
   selectedItem: string = 'notes';
 
-  constructor(private router: Router) {}
+  constructor(readonly router: Router) {}
 
   selectItem(s: string) {
     this.selectedItem = s;
