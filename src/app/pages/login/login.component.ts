@@ -3,8 +3,10 @@ import { FormControl, Validators, FormGroupDirective } from '@angular/forms';
 import { NgForm } from '@angular/forms';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { UserService } from 'src/app/services/user_services/user.service';
+import { AuthService } from 'src/app/services/auth/auth.service'; // Add this import
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(
     control: FormControl | null,
@@ -18,6 +20,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
     );
   }
 }
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -26,6 +29,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class LoginComponent {
   constructor(
     private service: UserService,
+    private authService: AuthService, // Add this
     private router: Router,
     private spinner: NgxSpinnerService
   ) {}
@@ -38,6 +42,7 @@ export class LoginComponent {
     Validators.required,
     Validators.minLength(6),
   ]);
+
   onSubmit() {
     this.spinner.show();
     console.log('clicked');
@@ -45,11 +50,15 @@ export class LoginComponent {
       email: this.emailFormControl.value,
       password: this.passwordFormControl.value,
     };
+
     this.service.logIn(data).subscribe({
       next: (res: any) => {
         console.log('response value', res);
         const token = res.id;
-        localStorage.setItem('token', token);
+
+        // Use AuthService login method instead of directly setting localStorage
+        this.authService.login(token);
+
         this.spinner.hide();
         this.router.navigate(['dashboard']);
       },
@@ -59,6 +68,7 @@ export class LoginComponent {
       },
     });
   }
+
   onSignup() {
     this.router.navigate(['signup']);
   }

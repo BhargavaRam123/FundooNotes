@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ViewTypeService } from 'src/app/services/neededInfo_Service/view-type.service';
 import { SearchService } from 'src/app/services/search_service/search.service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth/auth.service';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -15,7 +16,8 @@ export class DashboardComponent {
   constructor(
     private viewService: ViewTypeService,
     private searchService: SearchService,
-    private router: Router
+    private router: Router,
+    private authservice: AuthService
   ) {}
 
   viewHover = false;
@@ -85,5 +87,8 @@ export class DashboardComponent {
       default:
         return '';
     }
+  }
+  onLogout() {
+    this.authservice.logout();
   }
 }

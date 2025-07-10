@@ -9,6 +9,8 @@ import { EditLabelsComponent } from './pages/edit-labels/edit-labels.component';
 import { BinComponent } from './pages/bin/bin.component';
 import { ArchiveComponent } from './pages/archive/archive.component';
 import { NotesComponent } from './pages/notes/notes.component';
+import { authGuard } from './guards/auth.guard'; // Adjust import path as needed
+
 const routes: Routes = [
   {
     path: 'login',
@@ -21,6 +23,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [authGuard], // Protect the entire dashboard
     children: [
       { path: '', redirectTo: 'notes', pathMatch: 'full' },
       { path: 'notes', component: NotesComponent },
@@ -31,8 +34,8 @@ const routes: Routes = [
       { path: 'bin', component: BinComponent },
     ],
   },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // or '/dashboard' if you want dashboard as default
-  { path: '**', redirectTo: '/login' }, // wildcard route for 404 cases
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' },
 ];
 
 @NgModule({
