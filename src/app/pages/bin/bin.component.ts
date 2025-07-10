@@ -14,7 +14,8 @@ export class BinComponent implements OnInit, OnDestroy {
   filteredDeletedNotes: any = [];
   viewType: any;
   currentSearchQuery = '';
-  searchSubscription: any;
+  searchSubscription!: Subscription;
+  refreshSubscription!: Subscription; // Add this line
 
   constructor(
     private notesApi: NotesService,
@@ -25,6 +26,10 @@ export class BinComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.searchSubscription) {
       this.searchSubscription.unsubscribe();
+    }
+    // Add this unsubscription
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
     }
   }
 
@@ -42,6 +47,15 @@ export class BinComponent implements OnInit, OnDestroy {
       (searchQuery) => {
         this.currentSearchQuery = searchQuery;
         this.filterNotes();
+      }
+    );
+
+    // Add this subscription to listen for refresh triggers
+    this.refreshSubscription = this.notesApi.notesUpdated$.subscribe(
+      (updated) => {
+        if (updated) {
+          this.loadDeletedNotes();
+        }
       }
     );
   }

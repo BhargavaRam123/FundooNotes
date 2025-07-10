@@ -51,7 +51,7 @@
 
 .check-icon {
   scale: 0.6;
-  color: white;
+  color: white !important;
 }
 .selected {
   border: 2px solid rgb(161, 66, 244) !important;

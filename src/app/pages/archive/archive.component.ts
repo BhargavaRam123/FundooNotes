@@ -14,7 +14,8 @@ export class ArchiveComponent implements OnInit, OnDestroy {
   archiveNotes: any = [];
   filteredArchiveNotes: any = [];
   currentSearchQuery = '';
-  searchSubscription: any;
+  searchSubscription!: Subscription;
+  refreshSubscription!: Subscription; // Add this line
 
   constructor(
     private notesApi: NotesService,
@@ -25,6 +26,10 @@ export class ArchiveComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.searchSubscription) {
       this.searchSubscription.unsubscribe();
+    }
+    // Add this unsubscription
+    if (this.refreshSubscription) {
+      this.refreshSubscription.unsubscribe();
     }
   }
 
@@ -44,13 +49,25 @@ export class ArchiveComponent implements OnInit, OnDestroy {
         this.filterNotes();
       }
     );
+
+    // Add this subscription to listen for refresh triggers
+    this.refreshSubscription = this.notesApi.notesUpdated$.subscribe(
+      (updated) => {
+        if (updated) {
+          this.loadArchiveNotes();
+        }
+      }
+    );
   }
 
   loadArchiveNotes() {
     this.notesApi.getArchiveNotesList().subscribe({
       next: (res: any) => {
         console.log('getting notes', res);
-        this.archiveNotes = [...res.data.data];
+        // Filter out deleted notes, keep only archived notes that are not deleted
+        this.archiveNotes = res.data.data.filter(
+          (note: any) => note.isArchived && !note.isDeleted
+        );
         this.filterNotes(); // Apply current search filter
       },
       error: (err) => {

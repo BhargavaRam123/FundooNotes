@@ -65,7 +65,10 @@ export class CardcontainerComponent implements OnInit, OnDestroy {
     this.notesApi.getUserNotes().subscribe({
       next: (res: any) => {
         console.log('getting notes', res);
-        this.userNotes = [...res.data.data];
+        // Filter out archived and deleted notes
+        this.userNotes = res.data.data.filter(
+          (note: any) => !note.isArchived && !note.isDeleted
+        );
         this.countPined();
         this.filterNotes(); // Apply current search filter
       },
